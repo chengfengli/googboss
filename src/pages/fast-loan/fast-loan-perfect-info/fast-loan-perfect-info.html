@@ -1,0 +1,115 @@
+<!--
+  Generated template for the IdAuthentication page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header #header>
+
+    <ion-navbar>
+        <ion-title>完善资料</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-card>
+        <ion-card-header>
+            最高学历
+        </ion-card-header>
+        <ion-card-content>
+            <div class="card-row">
+                <button class="card-box" ion-button round [clear]="this.eduState==5?false:true"
+                        [color]="this.eduState==5?'primary':'font-normal'"
+                        eduState="5" (click)="this.eduState = 5">硕士及以上
+                </button>
+                <button class="card-box" ion-button round [clear]="this.eduState==4?false:true"
+                        [color]="this.eduState==4?'primary':'font-normal'"
+                        eduState="4" (click)="this.eduState = 4">本科
+                </button>
+                <button class="card-box" ion-button round [clear]="this.eduState==3?false:true"
+                        [color]="this.eduState==3?'primary':'font-normal'"
+                        eduState="3" (click)="this.eduState = 3">大专
+                </button>
+            </div>
+            <div class="card-row">
+                <button class="card-box" ion-button round [clear]="this.eduState==2?false:true"
+                        [color]="this.eduState==2?'primary':'font-normal'"
+                        eduState="2" (click)="this.eduState = 2">高中/中专/技校
+                </button>
+                <button class="card-box" ion-button round [clear]="this.eduState==1?false:true"
+                        [color]="this.eduState==1?'primary':'font-normal'"
+                        eduState="1" (click)="this.eduState = 1">初中及以下
+                </button>
+            </div>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            婚姻情况
+        </ion-card-header>
+        <ion-card-content>
+            <div class="card-row">
+                <button class="card-box" ion-button round [clear]="this.marriedState==2?false:true"
+                        [color]="this.marriedState==2?'primary':'font-normal'"
+                        marriedState="2" (click)="this.marriedState = 2">已婚
+                </button>
+                <button class="card-box" ion-button round [clear]="this.marriedState==1?false:true"
+                        [color]="this.marriedState==1?'primary':'font-normal'"
+                        marriedState="1" (click)="this.marriedState = 1">未婚
+                </button>
+                <button class="card-box" ion-button round [clear]="this.marriedState==3?false:true"
+                        [color]="this.marriedState==3?'primary':'font-normal'"
+                        marriedState="3" (click)="this.marriedState = 3">离异
+                </button>
+            </div>
+            <div class="card-row">
+                <button class="card-box" ion-button round [clear]="this.marriedState==4?false:true"
+                        [color]="this.marriedState==4?'primary':'font-normal'"
+                        marriedState="4" (click)="this.marriedState = 4">丧偶
+                </button>
+            </div>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            住房情况
+        </ion-card-header>
+        <ion-card-content>
+            <div class="card-row">
+                <button class="card-box" ion-button round [clear]="this.housingState==1?false:true"
+                        [color]="this.housingState==1?'primary':'font-normal'"
+                        housingState="1" (click)="this.housingState = 1">自有无房贷
+                </button>
+                <button class="card-box" ion-button round [clear]="this.housingState==2?false:true"
+                        [color]="this.housingState==2?'primary':'font-normal'"
+                        housingState="2" (click)="this.housingState = 2">自有有房贷
+                </button>
+                <button class="card-box" ion-button round [clear]="this.housingState==3?false:true"
+                        [color]="this.housingState==3?'primary':'font-normal'"
+                        housingState="3" (click)="this.housingState = 3">宿舍
+                </button>
+            </div>
+            <div class="card-row">
+                <button class="card-box" ion-button round [clear]="this.housingState==4?false:true"
+                        [color]="this.housingState==4?'primary':'font-normal'"
+                        housingState="4" (click)="this.housingState = 4">租赁
+                </button>
+                <button class="card-box" ion-button round [clear]="this.housingState==5?false:true"
+                        [color]="this.housingState==5?'primary':'font-normal'"
+                        housingState="5" (click)="this.housingState = 5">其他
+                </button>
+            </div>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-title>
+            <div class="apply-btn-box">
+                <button class="submit-btn" round color="primary" block ion-button (click)="submitApply()">提交</button>
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-footer>

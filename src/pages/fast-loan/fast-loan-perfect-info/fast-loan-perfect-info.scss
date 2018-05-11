@@ -1,0 +1,53 @@
+page-fast-loan-perfect-info {
+  .content {
+    background: #efeff4;
+    .card {
+      margin: 0;
+      width: 100%;
+      box-shadow: none;
+      margin-bottom: 12px;
+      ion-card-header {
+        font-size: 16px;
+        padding-top: 18px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #efeff4;
+        color: #033333;
+        font-weight: normal;
+      }
+      ion-card-content {
+        @include flex-box;
+        @include flex-wrap();
+        color: #666;
+        padding-left: 14px;
+        padding-right: 0;
+        padding-bottom: 18px;
+        .card-row {
+          @include flex-box;
+          flex-wrap: nowrap;
+          -ms-flex-wrap: nowrap;
+          -webkit-flex-wrap: nowrap;
+          width: 100%;
+        }
+        .card-box {
+          min-width: 7rem;
+          text-align: center;
+          height: 30px;
+          border-radius: 30px;
+          line-height: 30px;
+          padding: 0 10px;
+          font-size: 1.4rem;
+          margin-right: 10%;
+          @include responsive(lg) {
+            margin-right: 15%;
+          }
+          @include responsive(sm) {
+            margin-right: 6%;
+          }
+        }
+      }
+    }
+  }
+  .apply-btn-box {
+    background-color: #efeff4;
+  }
+}

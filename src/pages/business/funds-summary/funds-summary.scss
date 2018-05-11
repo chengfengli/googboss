@@ -1,0 +1,91 @@
+page-funds-summary {
+  .transaction-title {
+    padding: 24px 0 10px 43px;
+    @include responsive(sm) {
+      padding-left: 22px;
+    }
+    border-bottom: 1px solid #dcdcdc;
+    ion-row {
+      @include align-items();
+      color: map-get($colors, 'font-dark');
+      margin-bottom: 11px;
+      font-size: 14px;
+      span {
+        margin-left: 32px;
+        color: map-get($colors, 'font-normal');
+      }
+      &:nth-child(1) {
+        span {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+  .transaction-content {
+    padding: 0 25px;
+    @include responsive(sm) {
+      padding: 0 8px;
+    }
+    .content-bg {
+      img {
+        height: 100%;
+      }
+      &:nth-child(1) {
+        width: calc(100% + 2px);
+        height: 30px;
+      }
+      &:nth-child(3) {
+        margin-top: -2px;
+        height: 11px;
+      }
+    }
+    ion-card-header {
+      font-weight: normal;
+      font-size: 15px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      ion-row {
+        @include justify-content();
+        color: map-get($colors, 'font-normal');
+      }
+    }
+    ion-grid {
+      background-image: url(../assets/images/img/line.png);
+      background-repeat: repeat-y;
+      background-size: 100% 5px;
+      margin-top: -2px;
+      font-size: 13px;
+      padding: 0 15px 5px;
+      max-height: 320px;
+      @include responsive(sm) {
+        max-height: 270px;
+      }
+      @include responsive(lg) {
+        max-height: 360px;
+      }
+      overflow-y: scroll;
+      display: block;
+      color: map-get($colors, 'font-normal');
+      & > ion-row {
+        border-bottom: 0.55px solid #e5e5e5;
+        padding: 19px 0 7px;
+        ion-col {
+          text-align: center;
+          padding: 0;
+        }
+        &:first-child {
+          width: calc(100% + 24px);
+          margin-left: -12px;
+        }
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+    .warning-text {
+      font-size: 11px;
+      color: map-get($colors, 'font-light');
+      margin-top: 19px;
+    }
+  }
+}

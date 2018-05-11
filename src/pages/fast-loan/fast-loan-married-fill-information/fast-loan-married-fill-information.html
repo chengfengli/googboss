@@ -1,0 +1,71 @@
+<!--
+  Generated template for the FastLoanMarriedFillInformation page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header #header>
+
+    <ion-navbar>
+        <ion-title>补充信息</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-card class="gb-card">
+        <ion-card-header>
+            <ion-icon name="wanshanxinxi">请完善以下信息并完成签约</ion-icon>
+        </ion-card-header>
+    </ion-card>
+    <ion-list class="gb-form" [formGroup]="myForm">
+        <p class="gb-item-title">配偶姓名</p>
+        <ion-item>
+            <ion-input placeholder="请输入配偶姓名" formControlName="spouseName" maxlength="30"></ion-input>
+        </ion-item>
+        <p class="gb-item-title">配偶证件类型</p>
+        <ion-item>
+            <ion-label class="select-label">证件类型</ion-label>
+            <ion-select okText="确定" cancelText="取消" formControlName="spouseCardType" placeholder="请选择配偶证件类型">
+                <ion-option *ngFor="let card of cardTypes" [value]="card.id">{{card.name}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <p class="gb-item-title">配偶证件号</p>
+        <ion-item>
+            <ion-input placeholder="请输入配偶证件号" formControlName="spouseCardNum" type="text"></ion-input>
+        </ion-item>
+        <p class="gb-item-title">配偶手机号</p>
+        <ion-item>
+            <ion-input placeholder="请输入配偶手机号" formControlName="spousePhoneNum" type="tel"></ion-input>
+        </ion-item>
+        <p class="gb-item-title">贷款人家庭住址</p>
+        <ion-item>
+            <ion-input placeholder="请输入贷款人家庭住址" formControlName="marryBorrowerAddress"></ion-input>
+        </ion-item>
+        <p class="gb-item-title">配偶家庭住址</p>
+        <ion-item>
+            <ion-input placeholder="请输入配偶家庭住址" formControlName="spouseAddress" [(ngModel)]="spouseAddress"></ion-input>
+        </ion-item>
+        <p style="text-align: right">
+            <button ion-button class="text-btn" color="primary" clear (click)="setSpouseAddressSame()">同贷款人住址</button>
+        </p>
+        <p class="gb-item-title">配偶居住性质</p>
+        <ion-item>
+            <ion-label class="select-label">请选择配偶居住性质</ion-label>
+            <ion-select okText="确定" cancelText="取消" formControlName="spouseLiveNature" placeholder="配偶居住性质">
+                <ion-option *ngFor="let house of houseTypes" [value]="house.id">{{house.name}}</ion-option>
+            </ion-select>
+        </ion-item>
+    </ion-list>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-title>
+            <div class="apply-btn-box">
+                <button class="submit-btn" round block color="primary" ion-button (click)="goToSign()">确认签约</button>
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-footer>
+<div class="shade" *ngIf="shouldShowShade"></div>

@@ -1,0 +1,49 @@
+<!--
+  Generated template for the TtrWithdrawSuccess page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header #header>
+
+    <ion-navbar hideBackButton>
+        <ion-title>提现结果</ion-title>
+        <ion-buttons end>
+            <button ion-button clear (click)="gotoTTRList()">完成</button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-card class="gb-card">
+        <ion-card-header>
+            <ion-row>
+                <ion-col width-10 class="statu-box">
+                    <ion-icon name="wancheng" color="light"></ion-icon>
+                    <div color="light">
+                    </div>
+                </ion-col>
+                <ion-col class="main-text">
+                    <p color="light">提现申请提交成功，等待处理</p>
+                    <p color="font-light">卡号：{{bankNo | sensitiveInformationProtectionPipe}}</p>
+                    <p color="font-light">金额：{{withdrawAmt | currencyPipe}}元</p>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col width-10 class="statu-box">
+                    <div>
+                    </div>
+                    <ion-icon name="account1" color="font-light"></ion-icon>
+                </ion-col>
+                <ion-col class="main-text">
+                    <p color="font-light">操作完成，请及时查看到账情况</p>
+                </ion-col>
+            </ion-row>
+        </ion-card-header>
+        <ion-card-content>
+            <button ion-button clear color="light" (click)="gotoTTRList()">查看记录></button>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

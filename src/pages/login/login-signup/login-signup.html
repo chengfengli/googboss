@@ -1,0 +1,18 @@
+<!--
+  Generated template for the LoginSignup page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content no-bounce>
+    <!--<div class="bg-img">
+      <ion-img [src] = "backgroundImg | imgPipe"></ion-img>
+    </div>-->
+    <div class="content-box">
+        <button class="login-btn" ion-button color="primary" block round (click)="doLogin()">登录</button>
+        <button class="login-btn" ion-button color="primary" round outline block (click)="doSignup()">注册</button>
+        <p class="without-login" color="primary">
+            <span (click)="doLook()">我先看看</span>
+        </p>
+    </div>
+</ion-content>

@@ -1,0 +1,20 @@
+page-daily-loan-withdraw-fail {
+  .content {
+    .text-title {
+      text-align: center;
+      font-weight: normal;
+      ion-icon {
+        color: #033333;
+        font-size: 16px;
+        &:before {
+          font-size: 30px;
+          color: map-get($colors, 'primary');
+        }
+      }
+    }
+    .text-main {
+      margin-top: 0;
+      font-size: 12px;
+    }
+  }
+}

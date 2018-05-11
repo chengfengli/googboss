@@ -1,0 +1,179 @@
+page-daily-loan-merchant-list {
+  .bar-buttons {
+    .button-inner {
+      span {
+        margin-left: -4px;
+      }
+    }
+  }
+  .back-button {
+    display: none !important;
+  }
+  .content {
+    .scroll-content {
+      @include flex-box;
+      @include flex-direction();
+    }
+    .content-title {
+      background: url(../assets/images/img/ttr-list-bg.png) repeat-x;
+      background-size: 5px 100%;
+      .submit-btn {
+        bottom: 33px;
+        width: 65%;
+        height: 45px;
+        box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.25);
+      }
+      ion-slide {
+        margin-left: 10%;
+        width: 90% !important;
+        &:first-child {
+          margin-left: 5%;
+        }
+      }
+      ion-card {
+        border-radius: 5px;
+        margin-left: 2%;
+        margin-right: 0;
+        width: 96%;
+        box-shadow: none;
+        ion-card-header {
+          @include responsive(sm) {
+            padding-top: 10px;
+            padding-bottom: 10px;
+          }
+          h5 {
+            border-bottom: 1px solid #f9ae9d;
+            font-size: 14px;
+            line-height: 30px;
+            padding-bottom: 5px;
+            height: 37px;
+            @include flex-box;
+            @include justify-content();
+            ion-icon {
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              font-size: 14px;
+              &:before {
+                font-size: 25px
+              }
+            }
+          }
+          .card-tab-box {
+            @include flex-box;
+            @include justify-content(space-around);
+            button {
+              border-radius: 0;
+              height: 2.7rem;
+              font-size: 13px;
+              margin-top: 10px;
+              &.active {
+                color: map-get($colors, 'primary');
+                border-bottom: 1px solid map-get($colors, 'primary');
+              }
+            }
+            & > p {
+              width: 1px;
+              height: 2.5rem;
+              background-color: #f67e62;
+              margin-top: 1.1rem;
+            }
+          }
+        }
+        ion-card-content {
+          ion-row {
+            @include justify-content();
+            &:nth-child(2) {
+              p {
+                font-size: 45px;
+                @include responsive(sm) {
+                  font-size: 30px;
+                }
+                span {
+                  font-size: 20px;
+                  margin-right: 9px;
+                }
+              }
+            }
+            &:nth-child(3) {
+              ion-col {
+                p {
+                  &:nth-child(1) {
+                    font-size: 18px;
+                    @include responsive(sm) {
+                      font-size: 15px;
+                    }
+                  }
+                  &:nth-child(2) {
+                    font-size: 10px;
+                  }
+                }
+              }
+              margin-bottom: 30px;
+            }
+          }
+        }
+      }
+    }
+    .content-main {
+      flex: 1;
+      .date-pick {
+        flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
+        @include justify-content(space-between);
+        @include align-items(center);
+        ion-icon {
+          margin-left: 10px;
+        }
+        ion-item {
+          padding-left: 0;
+          padding-right: 0;
+          width: auto;
+        }
+        ion-datetime {
+          font-size: 10px;
+          color: map-get($colors, 'font-light');
+        }
+        button {
+          font-size: 13px !important;
+        }
+      }
+      .property-box {
+        ion-card-header {
+          border-bottom: 1px solid #e5e5e5;
+          padding-top: 13px;
+          padding-bottom: 13px;
+          @include responsive(sm) {
+            padding-top: 9px;
+            padding-bottom: 9px;
+          }
+          ion-icon {
+            font-size: 16px;
+            &:before {
+              color: map-get($colors, 'light');
+              font-size: 30px;
+              margin-right: 8px;
+              @include responsive(sm) {
+                font-size: 25px;
+              }
+            }
+          }
+        }
+        ion-card-content {
+          padding-left: 60px;
+          padding-right: 70px;
+          padding-top: 23px;
+          @include responsive(sm) {
+            padding-top: 15px;
+            padding-bottom: 0;
+          }
+          ion-row {
+            @include justify-content(space-between);
+            color: map-get($colors, 'font-normal');
+            margin-bottom: 15px;
+          }
+        }
+      }
+    }
+  }
+}

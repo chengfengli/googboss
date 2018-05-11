@@ -1,0 +1,93 @@
+<!--
+  Generated template for the MyCustomService page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header #header>
+
+    <ion-navbar>
+        <ion-title>我的客服</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-card class="gb-card statu-tab">
+        <div [class]="status===null?'active':''" (click)="toogleStatus(null)">
+            <button ion-button clear color="font-dark">全部</button>
+        </div>
+        <div [class]="status==='1'?'active':''" (click)="toogleStatus('1')">
+            <button ion-button clear color="font-dark">处理中</button>
+        </div>
+        <div [class]="status==='2'?'active':''" (click)="toogleStatus('2')">
+            <button ion-button clear color="font-dark">处理完毕</button>
+        </div>
+        <div [class]="status==='3'?'active':''" (click)="toogleStatus('3')">
+            <button ion-button clear color="font-dark">提交失败</button>
+        </div>
+    </ion-card>
+    <div *ngIf="!shouldShowNetError">
+        <ion-card class="gb-card apply-card" *ngFor="let centerApplyRequstInfo of centerApplyRequstInfos">
+            <ion-card-content>
+                <ion-row>
+                    商户名<span>{{centerApplyRequstInfo?.mcthName}}</span>
+                </ion-row>
+                <ion-row>
+                    商户号<span>{{centerApplyRequstInfo?.mchtNo}}</span>
+                </ion-row>
+                <ion-row>
+                    申请时间<span>{{centerApplyRequstInfo?.createDate}}</span>
+                </ion-row>
+                <ion-row>
+                    服务类型<span>{{centerApplyRequstInfo?.taskSubType | allinpayServiceTypePipe}}</span>
+                </ion-row>
+                <ion-row>
+                    订单编号<span>{{centerApplyRequstInfo?.code}}</span>
+                </ion-row>
+                <ion-row>
+                    <p color="primary" *ngIf="centerApplyRequstInfo?.status === '03'">处理中</p>
+                    <p color="font-normal" *ngIf="centerApplyRequstInfo?.status === '05'">提交失败</p>
+                    <button class="text-btn" ion-button clear color="font-normal"
+                            *ngIf="centerApplyRequstInfo?.status === '04'"
+                            (click)="goToPraise($event, centerApplyRequstInfo)">已完成，待评价>
+                    </button>
+                    <p color="font-normal" *ngIf="centerApplyRequstInfo?.status === '06'">处理完成并已评价</p>
+                    <p color="font-normal" *ngIf="centerApplyRequstInfo?.status === '00'">客服系统端未找到对应工单</p>
+                    <p color="font-normal" *ngIf="centerApplyRequstInfo?.status === '01'">已提交</p>
+                    <p color="font-normal" *ngIf="centerApplyRequstInfo?.status === '02'">已受理</p>
+                </ion-row>
+            </ion-card-content>
+        </ion-card>
+    </div>
+    <div class="nodata" *ngIf="shouldShowNoData || shouldShowNetError">
+        <div class="no-data-shade" *ngIf="shouldShowNoData">
+            <img [src]="noDataImg | imgPipe"/>
+            <p>暂无记录</p>
+            <p color="font-light" style="font-size:10px;">更多内容由你开启~</p>
+            <button ion-button round outline (click)="reloadData()">点击刷新</button>
+        </div>
+        <div class="net-error-shade" *ngIf="shouldShowNetError">
+            <img [src]="netErrorImg | imgPipe"/>
+            <p>网络错误，请稍后再试...</p>
+            <button ion-button round outline (click)="reloadData()">点击刷新</button>
+        </div>
+    </div>
+    <ion-infinite-scroll [hidden]="!hasMoreData" (ionInfinite)="loadMore($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-title>
+            <div class="apply-btn-box">
+                <button ion-button class="submit-btn" block color="primary" round (click)="goToApply($event)">申请服务
+                </button>
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-footer>

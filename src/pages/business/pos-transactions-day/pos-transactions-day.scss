@@ -1,0 +1,56 @@
+page-pos-transactions-day {
+  .content {
+    background-color: #efeff4;
+    .transaction-title {
+      padding: 24px 14px 10px;
+      ion-row {
+        @include align-items();
+        color: map-get($colors, 'font-dark');
+        margin-bottom: 11px;
+        font-size: 14px;
+        span {
+          margin-left: 32px;
+        }
+        &:nth-child(1) {
+          span {
+            font-size: 13px
+          }
+        }
+      }
+    }
+    .transaction-content {
+      ion-card-header {
+        font-weight: normal;
+        border-bottom: 1px solid #e5e5e5;
+        padding: 16px 15px 12px;
+        ion-row {
+          @include align-items();
+          color: map-get($colors, 'font-dark');
+          font-size: 14px;
+          span {
+            margin-left: 21px;
+            font-size: 12px;
+          }
+        }
+      }
+      ion-card-content {
+        padding: 0;
+        ion-grid {
+          padding-top: 10px;
+          padding-bottom: 15px;
+          ion-row {
+            color: map-get($colors, 'font-light');
+            font-size: 11px;
+            ion-col {
+              text-align: center;
+            }
+            &:nth-child(1) {
+              color: map-get($colors, 'font-normal');
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

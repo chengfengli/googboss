@@ -1,0 +1,42 @@
+<!--
+  Generated template for the ChoosePaymentModal page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header #header>
+
+    <ion-navbar>
+        <ion-title></ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-card class="gb-card">
+        <ion-card-header>
+            <p>选择支付方式</p>
+            <button ion-button icon-only clear color="font-normal" (click)="dismissModal()">
+                <ion-icon name="close" color="font-light"></ion-icon>
+            </button>
+        </ion-card-header>
+        <ion-card-content>
+            <div class="radio-box">
+                <ion-item (click)="chooseWallet()">
+                    <div>
+                        <img [src]="tlqbImg | imgPipe"/>
+                    </div>
+                    <ion-icon item-right name="wancheng" color="light" *ngIf="shouldSelectWallet()"></ion-icon>
+                </ion-item>
+                <ion-item (click)="chooseTong()">
+                    <div>
+                        <img [src]="tltImg | imgPipe"/>
+                    </div>
+                    <ion-icon item-right name="wancheng" color="light" *ngIf="shouldSelectTong()"></ion-icon>
+                </ion-item>
+            </div>
+        </ion-card-content>
+        <button class="submit-btn" ion-button round block color="primary" (click)="goToPayment()">确认支付</button>
+    </ion-card>
+</ion-content>

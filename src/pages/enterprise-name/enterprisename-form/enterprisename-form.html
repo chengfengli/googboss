@@ -1,0 +1,110 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>编辑企业信息</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <div id="header">
+        <!--logo-->
+        <div id="logo-box">
+            <div id="logo-txt" (click)="setPhoto('logo')" [hidden]="showLogoTxt">企业<br>LOGO</div>
+            <img (click)="setPhoto('logo')" [src]="logoImg | imgPipe">
+        </div>
+    </div>
+
+    <form>
+        <ion-list class="gb-form">
+            <p class="gb-item-title">名片名称</p>
+            <ion-item>
+                <ion-input type="text" name="cardName" [(ngModel)]="nameCard.cardName"
+                           placeholder="请输入名片名称"></ion-input>
+            </ion-item>
+            <p class="gb-item-title">企业名称</p>
+            <ion-item>
+                <ion-input type="text" name="companyName" [(ngModel)]="nameCard.companyName"
+                           placeholder="请输入企业名称"></ion-input>
+            </ion-item>
+            <p class="gb-item-title">企业介绍</p>
+            <ion-item>
+                <ion-input type="text" name="companyIntroduce" [(ngModel)]="nameCard.companyIntroduce"
+                           placeholder="请输入企业介绍"></ion-input>
+            </ion-item>
+            <p class="gb-item-title">联系方式（至少填写一项信息）</p>
+            <p class="gb-item-title">手机号</p>
+            <ion-item>
+                <ion-input type="tel" name="mobile" [(ngModel)]="nameCard.mobile" placeholder="请输入手机号"></ion-input>
+            </ion-item>
+            <p class="gb-item-title">座机号</p>
+            <ion-item>
+                <ion-input type="text" name="areacode" [(ngModel)]="areacode" placeholder="区号020"></ion-input>
+                <ion-input type="text" name="phone" [(ngModel)]="phone" placeholder="座机号码"></ion-input>
+            </ion-item>
+            <p class="gb-item-title">企业微信号</p>
+            <ion-item>
+                <ion-input type="text" name="wxNo" [(ngModel)]="nameCard.wxNo" placeholder="请输入微信公众号"></ion-input>
+            </ion-item>
+            <p class="gb-item-title">名片备注</p>
+            <ion-item>
+                <ion-input type="text" name="remark" [(ngModel)]="nameCard.remark" placeholder="请输入名片的备注信息"></ion-input>
+            </ion-item>
+            <ion-row [hidden]="!isShowMore">
+                <p class="gb-item-title">网店名称</p>
+                <ion-item>
+                    <ion-input type="text" name="shopName" [(ngModel)]="nameCard.shopName"
+                               placeholder="请输入网店名称"></ion-input>
+                </ion-item>
+                <p class="gb-item-title">网店地址</p>
+                <ion-item>
+                    <ion-input type="text" name="shopLink" [(ngModel)]="nameCard.shopLink"
+                               placeholder="请输入网店地址"></ion-input>
+                </ion-item>
+            </ion-row>
+            <ion-row [hidden]="!isShowMore">
+                <ion-col>
+                    <div class="imgs">
+                        <ion-icon class="delete" [hidden]="isShowDel1"
+                                  (click)="deletePic('shopImg1','showImg1','isShowDel1')" ios="ios-trash"
+                                  md="md-trash"></ion-icon>
+                        <img id="img1" [src]="shopImg1 | imgPipe">
+                        <div [hidden]="showImg1" (click)="addShopImg('img1')" class="add_pic">
+                            <ion-icon name="md-add"></ion-icon>
+                            <br>
+                            <div>添加图片</div>
+                        </div>
+                    </div>
+                </ion-col>
+                <ion-col>
+                    <div class="imgs">
+                        <ion-icon class="delete" [hidden]="isShowDel2"
+                                  (click)="deletePic('shopImg2','showImg2','isShowDel2')" ios="ios-trash"
+                                  md="md-trash"></ion-icon>
+                        <img id="img2" [src]="shopImg2 | imgPipe">
+                        <div [hidden]="showImg2" (click)="addShopImg('img2')" class="add_pic">
+                            <ion-icon name="md-add"></ion-icon>
+                            <br>
+                            <div>添加图片</div>
+                        </div>
+                    </div>
+                </ion-col>
+                <ion-col>
+                    <div class="imgs">
+                        <ion-icon class="delete" [hidden]="isShowDel3"
+                                  (click)="deletePic('shopImg3','showImg3','isShowDel3')" ios="ios-trash"
+                                  md="md-trash"></ion-icon>
+                        <img id="img3" [src]="shopImg3 | imgPipe">
+                        <div [hidden]="showImg3" (click)="addShopImg('img3')" class="add_pic">
+                            <ion-icon name="md-add"></ion-icon>
+                            <br>
+                            <div>添加图片</div>
+                        </div>
+                    </div>
+                </ion-col>
+            </ion-row>
+            <button id="showMore" outline [hidden]="isShowMore" (click)="showMore()" ion-button type="button">
+                <ion-icon name="md-add"></ion-icon>
+                添加更多企业信息
+            </button>
+            <button id="next" ion-button type="button" (click)="preview()">下一步，预览名片</button>
+        </ion-list>
+    </form>
+</ion-content>

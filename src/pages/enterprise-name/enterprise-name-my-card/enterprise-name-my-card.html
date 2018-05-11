@@ -1,0 +1,133 @@
+<ion-header #header>
+    <ion-navbar id="navbar">
+
+        <ion-title>
+            我的名片
+        </ion-title>
+        <ion-buttons start>
+            <button clear ion-button icon-only (click)="goBack()">
+                <ion-icon name="arrow-dropleft"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-buttons end>
+            <button clear ion-button icon-only (click)="addNameCard()">
+                新建名片
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+    <ion-toolbar id="tab">
+        <ion-segment [(ngModel)]="namecardList">
+            <ion-segment-button (click)="getNameCard('')" value="all">
+                全部
+            </ion-segment-button>
+            <ion-segment-button (click)="getNameCard('0')" value="0">
+                审核中
+            </ion-segment-button>
+            <ion-segment-button (click)="getNameCard('1')" value="1">
+                审核通过
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+
+</ion-header>
+<ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <div [ngSwitch]="namecardList">
+        <!--全部 -->
+        <div *ngSwitchCase="'all'">
+            <ion-list>
+                <div class="no-data-shade" *ngIf="shouldShowNoData">
+                    <img [src]="noDataImg | imgPipe"/>
+                    <p>暂无记录</p>
+                    <p color="font-light" style="font-size:10px;">更多内容由你开启~</p>
+                    <button ion-button round outline (click)="reloadData()">点击刷新</button>
+                </div>
+                <div class="net-error-shade" *ngIf="shouldShowNetError">
+                    <img [src]="netErrorImg | imgPipe"/>
+                    <p>网络错误，请稍后再试...</p>
+                    <button ion-button round outline (click)="reloadData()">点击刷新</button>
+                </div>
+                <div *ngIf="!shouldShowNetError">
+                    <ion-item *ngFor="let item of items">
+                        <ion-row (click)="details(item)">
+                            <ion-col col-4><img [src]="imageURL+item.templateBgimg"></ion-col>
+                            <ion-col col-8>
+                                <p>名片编号：{{item.cardId}}</p>
+                                <p>名片名称：{{item.cardName}}</p>
+                                <p>备注：{{item.remark}}</p>
+                                <p>上次保存时间：{{item.lastUpdateTime}}</p>
+                                <p>状态：<span class="status">{{item.status | nameCardTypePipe}}</span></p>
+                            </ion-col>
+                        </ion-row>
+                    </ion-item>
+                </div>
+            </ion-list>
+        </div>
+        <!--审核中-->
+        <div *ngSwitchCase="'0'">
+            <ion-list>
+                <div class="no-data-shade" *ngIf="shouldShowNoData">
+                    <img [src]="noDataImg | imgPipe"/>
+                    <p>暂无记录</p>
+                    <p color="font-light" style="font-size:10px;">更多内容由你开启~</p>
+                    <button ion-button round outline (click)="reloadData()">点击刷新</button>
+                </div>
+                <div class="net-error-shade" *ngIf="shouldShowNetError">
+                    <img [src]="netErrorImg | imgPipe"/>
+                    <p>网络错误，请稍后再试...</p>
+                    <button ion-button round outline (click)="reloadData()">点击刷新</button>
+                </div>
+                <div *ngIf="!shouldShowNetError">
+                    <ion-item *ngFor="let item of items">
+                        <ion-row (click)="details(item)">
+                            <ion-col col-4><img [src]="imageURL+item.templateBgimg"></ion-col>
+                            <ion-col col-8>
+                                <p>名片编号：{{item.cardId}}</p>
+                                <p>名片名称：{{item.cardName}}</p>
+                                <p>备注：{{item.remark}}</p>
+                                <p>上次保存时间：{{item.lastUpdateTime}}</p>
+                                <p>状态：<span class="status">{{item.status | nameCardTypePipe}}</span></p>
+                            </ion-col>
+                        </ion-row>
+                    </ion-item>
+                </div>
+            </ion-list>
+        </div>
+        <!--审核通过-->
+        <div *ngSwitchCase="'1'">
+            <ion-list>
+                <div class="no-data-shade" *ngIf="shouldShowNoData">
+                    <img [src]="noDataImg | imgPipe"/>
+                    <p>暂无记录</p>
+                    <p color="font-light" style="font-size:10px;">更多内容由你开启~</p>
+                    <button ion-button round outline (click)="reloadData()">点击刷新</button>
+                </div>
+                <div class="net-error-shade" *ngIf="shouldShowNetError">
+                    <img [src]="netErrorImg | imgPipe"/>
+                    <p>网络错误，请稍后再试...</p>
+                    <button ion-button round outline (click)="reloadData()">点击刷新</button>
+                </div>
+                <div *ngIf="!shouldShowNetError">
+                    <ion-item *ngFor="let item of items">
+                        <ion-row (click)="details(item)">
+                            <ion-col col-4><img [src]="imageURL+item.templateBgimg"></ion-col>
+                            <ion-col col-8>
+                                <p>名片编号：{{item.cardId}}</p>
+                                <p>名片名称：{{item.cardName}}</p>
+                                <p>备注：{{item.remark}}</p>
+                                <p>上次保存时间：{{item.lastUpdateTime}}</p>
+                                <p>状态：<span class="status">{{item.status | nameCardTypePipe}}</span></p>
+                            </ion-col>
+                        </ion-row>
+                    </ion-item>
+                </div>
+            </ion-list>
+        </div>
+    </div>
+    <ion-infinite-scroll [hidden]="!hasMoreData" (ionInfinite)="loadMore($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

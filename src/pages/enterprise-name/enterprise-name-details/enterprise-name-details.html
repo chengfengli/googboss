@@ -1,0 +1,41 @@
+<ion-content id="bg-contnet" [ngStyle]="{'background':'#54CCAD url('+templateBackground+')'}">
+    <ion-header style="margin-top: 10px;">
+        <ion-navbar>
+            <ion-title>
+                名片详情
+            </ion-title>
+            <ion-buttons end>
+                <button small ion-button (click)="share()">
+                    <ion-icon name="skip"></ion-icon>
+                </button>
+                <button small ion-button (click)="edit()">
+                    <ion-icon name="edit"></ion-icon>
+                </button>
+            </ion-buttons>
+        </ion-navbar>
+    </ion-header>
+    <ion-content>
+        <div id="statement">
+            /名片编号：{{nameCard.cardId}}&nbsp;/&nbsp;分享前请先阅读
+            <a (click)="disclaimer()" href="javascript:void(0)">《免责声明》</a>
+        </div>
+        <iframe [height]="height" data-tap-disabled="true" [src]="browser.secUrl"></iframe>
+        <table id="name-card-info">
+            <tr>
+                <td>上次保存时间：{{nameCard.lastUpdateTime}}</td>
+                <td>备注：{{nameCard.remark}}</td>
+            </tr>
+            <tr>
+                <td>审核状态：{{nameCard.status | nameCardTypePipe}}</td>
+            </tr>
+        </table>
+    </ion-content>
+    <ion-footer>
+        <ion-navbar>
+            <button id="addNameCard" ion-button outline (click)="addNameCard()">
+                <ion-icon name="md-add"></ion-icon>
+                新建名片
+            </button>
+        </ion-navbar>
+    </ion-footer>
+</ion-content>

@@ -1,0 +1,83 @@
+<!--
+  Generated template for the FastLoanApplyInfoPreview page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header #header>
+
+    <ion-navbar>
+        <ion-title>信息核实</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-row class="content-title">
+        您好，请核实您的贷款申请信息：
+    </ion-row>
+    <ion-card class="msg-card">
+        <ion-card-header>
+            <div class="bg-img">
+                <ion-img [src]="itemBg | imgPipe"></ion-img>
+            </div>
+            <p>信息预览</p>
+        </ion-card-header>
+        <ion-card-content>
+            <div class="loan-msg">
+                <ion-row class="msg-title">
+                    <ion-icon name="100fenqidaikuan01" color="primary">贷款信息</ion-icon>
+                </ion-row>
+                <ion-row>
+                    <p>商户名</p>
+                    <p>{{fastLoanRequestInfo?.mchtName}}</p>
+                </ion-row>
+                <ion-row>
+                    <p>放款账号</p>
+                    <p>{{fastLoanRequestInfo?.bankAccount}}</p>
+                </ion-row>
+                <ion-row>
+                    <p>贷款金额</p>
+                    <p>{{fastLoanRequestInfo?.loanAmount | currencyPipe}} 元</p>
+                </ion-row>
+                <ion-row>
+                    <p>贷款期限</p>
+                    <p>{{fastLoanRequestInfo?.loanDuration | fastLoanTermsPipe}}</p>
+                </ion-row>
+                <ion-row>
+                    <p>还款方式</p>
+                    <p>{{fastLoanRequestInfo?.paymentType | fastLoanRepaymentTypePipe}}</p>
+                </ion-row>
+            </div>
+            <div class="person-msg">
+                <ion-row class="msg-title">
+                    <ion-icon name="profile" color="light">个人信息</ion-icon>
+                </ion-row>
+                <ion-row>
+                    <p>学历</p>
+                    <p>{{fastLoanRequestInfo?.eduLevel | educationPipe}}</p>
+                </ion-row>
+                <ion-row>
+                    <p>婚姻状况</p>
+                    <p>{{fastLoanRequestInfo?.maritalStatus | marriedStatusPipe}}</p>
+                </ion-row>
+                <ion-row>
+                    <p>住房情况</p>
+                    <p>{{fastLoanRequestInfo?.houseStatus | housingStatusPipe}}</p>
+                </ion-row>
+            </div>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-title>
+            <ion-row class="btn-box">
+                <button ion-button round outline color="primary" (click)="goBack()">返回重填</button>
+                <button ion-button round color="primary" (click)="showEnterPwd()">提交申请</button>
+            </ion-row>
+        </ion-title>
+    </ion-toolbar>
+</ion-footer>
+<div class="shade" *ngIf="shouldShowShade"></div>

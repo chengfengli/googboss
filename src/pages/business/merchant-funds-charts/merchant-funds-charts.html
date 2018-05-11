@@ -1,0 +1,92 @@
+<!--
+  Generated template for the MerchantFundsCharts page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header #header>
+
+    <ion-navbar hideBackButton>
+        <ion-buttons start>
+            <button ion-button clear icon-only (click)="popRoot()">
+                <ion-icon name="arrow-dropleft"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>我的生e经</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-row class="merchant-name">
+        <ion-slides spaceBetween="-140%" (ionSlideDidChange)="slideChanged()">
+            <ion-slide *ngFor="let mcht of merchantList;let i = index">
+                <p [class]="i===currentMchtIndex?'active':''">
+                    <span>{{mcht.totalAmt.mchtName}}</span>
+                    <button ion-button icon-only clear color="white" class="merchant-detail" (click)="goMchtDetail($event,mcht.totalAmt.mchtName,mcht.totalAmt.mchtCd)">
+                            <ion-icon name="information"></ion-icon>
+                    </button>
+                </p>
+            </ion-slide>
+        </ion-slides>
+    </ion-row>
+    <div class="transaction-chart">
+        <ion-row class='transaction-chart-title'>
+            <button icon-only ion-button (click)="preSlidesDay()" [disabled]="slideDayStatu==='threeDay'">
+                <ion-icon name="arrow-back"></ion-icon>
+            </button>
+            <ion-row>
+                <div class="slidesDay" [@slideState]="slideDayStatu">
+                    <p [class]="slideDayStatu==='threeDay'?'active':''" (click)="this.slideDayStatu = 'threeDay';this.changeLineChart(this.threeDayAmt, this.threeDayDate);">
+                        近3天</p>
+                    <p [class]="slideDayStatu==='sevenDay'?'active':''" (click)="this.slideDayStatu = 'sevenDay';this.changeLineChart(this.sevenDayAmt, this.sevenDayDate);">
+                        近7天</p>
+                    <p [class]="slideDayStatu==='fifteenDay'?'active':''" (click)="this.slideDayStatu = 'fifteenDay';this.changeLineChart(this.fifteenDayAmt, this.fifteenDayDate);">
+                        近15天</p>
+                    <p [class]="slideDayStatu==='oneMonth'?'active':''" (click)="this.slideDayStatu = 'oneMonth';this.changeLineChart(this.oneMonthAmt, this.oneMonthDate);">
+                        近30天</p>
+                    <p [class]="slideDayStatu==='halfYear'?'active':''" (click)="this.slideDayStatu = 'halfYear';this.changeLineChart(this.halfYearAmt, this.halfYearDate);">
+                        近半年</p>
+                    <p [class]="slideDayStatu==='oneYear'?'active':''" (click)="this.slideDayStatu = 'oneYear';this.changeLineChart(this.oneYearAmt, this.oneYearDate);">
+                        近一年</p>
+                </div>
+            </ion-row>
+            <button icon-only ion-button (click)="nextSlidesDay()" [disabled]="slideDayStatu==='oneYear'">
+                <ion-icon name="arrow-forward"></ion-icon>
+            </button>
+        </ion-row>
+        <div class="my-line"></div>
+        <div class="line-chart">
+            <div>
+                <img src="assets/images/img/syj_icon.png" />交易流水总额（元）
+            </div>
+            <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType"></canvas>
+        </div>
+    </div>
+
+    <div class="manage-chart">
+        <ion-row class="manage-chart-title">
+            <ion-icon name="jinrongleiicontubiao-3">近30天的经营状况分析</ion-icon>
+            <ion-row>
+                <button ion-button color="light" color="light" [outline]="areaType==='01'?false:true" (click)="areaType='01';areaTypeIndex=0;getAreaInfo()">全省
+                </button>
+                <button ion-button color="light" color="light" [outline]="areaType==='02'?false:true" (click)="areaType='02';areaTypeIndex=1;getAreaInfo()">全市
+                </button>
+            </ion-row>
+        </ion-row>
+        <div class="bar-chart">
+            <ion-row>平均流水金额（元）
+                <!--<span style="color:#ee783f">&bull;</span>-->
+                </ion-row>
+            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [colors]="barChartColors" [chartType]="barChartType"></canvas>
+
+            <ion-row>
+                <ion-icon name="good">我排名前{{myRank}}，打败了{{totalRank}}的对手！</ion-icon>
+            </ion-row>
+        </div>
+    </div>
+    <button ion-item (click)="goPosTransactions()">近30天交易汇总</button>
+    <!--<button ion-item (click)="goFundsSummary()">近30天资金汇总</button>-->
+</ion-content>
+<div class="shade" *ngIf="shouldShowShade"></div>

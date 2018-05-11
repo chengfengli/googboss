@@ -1,0 +1,38 @@
+page-enter-captcha {
+  ion-header {
+    display: none;
+  }
+  .content {
+    background-color: rgba(0, 0, 0, 0);
+    ion-card {
+      height: 65%;
+      position: absolute;
+      bottom: 0;
+      margin-bottom: 0;
+      ion-card-header {
+        border-bottom: 1px solid #dcdcdc;
+        position: relative;
+        p {
+          text-align: center;
+          font-size: 15px;
+          font-weight: normal;
+        }
+        .button {
+          position: absolute;
+          right: 0;
+          top: 4px;
+          font-size: 14px;
+        }
+      }
+    }
+    ion-card-content {
+      height: 100%;
+      .pwd-box {
+        margin-top: 20px;
+      }
+      .submit-btn {
+        margin-top: 2.0rem;
+      }
+    }
+  }
+}

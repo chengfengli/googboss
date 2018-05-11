@@ -1,0 +1,75 @@
+page-service-praise {
+  ion-header {
+    .toolbar {
+      .toolbar-background {
+        background: url(../assets/images/img/kkd_list_bg.png);
+        background-size: 100% 4px;
+        background-repeat: repeat-y;
+      }
+    }
+  }
+  ion-content {
+    ion-icon {
+      @include flex-box;
+      @include align-items();
+    }
+    .content-title {
+      background-image: url(../assets/images/img/kkd_list_bg.png);
+      background-size: 100% 4px;
+      background-repeat: repeat-y;
+      height: 10.5rem;
+      @include flex-box;
+      @include align-items();
+      @include flex-direction();
+      ion-row {
+        margin-top: 21px;
+        &:nth-child(1) {
+          font-size: 17px;
+          color: #fff;
+        }
+        &:nth-child(2) {
+          font-size: 30px;
+          color: #fff;
+          ion-icon {
+            &[ng-reflect-name='wujiaoxing'] {
+              margin-top: -8px;
+            }
+            margin-right: 29px;
+            @include responsive(md) {
+              margin-right: 24px;
+            }
+            @include responsive(sm) {
+              margin-right: 16px;
+            }
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+    .content-main {
+      @include flex-box;
+      @include flex-direction();
+      @include align-items();
+      padding-top: 50px;
+      & > ion-row {
+        margin-bottom: 35px;
+        & > span {
+          font-size: 14px;
+        }
+        ion-icon {
+          &[ng-reflect-name='wujiaoxing'] {
+            margin-top: -4px;
+          }
+          color: #f9944a;
+          margin-left: 16px;
+          font-size: 20px;
+        }
+      }
+    }
+    .submit-btn {
+      margin-top: 90px;
+    }
+  }
+}

@@ -1,0 +1,57 @@
+page-fast-loan-repayment-details {
+  .nodata {
+    height: 100%;
+    width: 100%;
+    position: relative;
+  }
+  .withdraw-box {
+    height: 100%;
+    .grid {
+      position: relative;
+      .row {
+        min-height: 40px;
+        @include responsive(sm) {
+          min-height: 50px;
+        }
+        &.deal-list-title {
+          min-height: 43px;
+        }
+      }
+    }
+  }
+  .warning-text{
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  ion-datetime {
+    font-size: 10px;
+    color: map-get($colors, 'font-light');
+  }
+  .date-pick {
+    height: 56px;
+    flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    @include justify-content(space-between);
+    @include align-items(center);
+    button {
+      font-size: 13px !important;
+    }
+    p {
+      height: 100%;
+      @include flex-box;
+      @include align-items();
+    }
+    ion-icon {
+      margin-left: 16px;
+    }
+  }
+  .no-data-shade {
+    left: initial;
+    top: initial;
+    right: initial;
+    bottom: initial;
+    img {
+      margin-top: 0;
+    }
+  }
+}

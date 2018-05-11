@@ -1,0 +1,9 @@
+<ion-tabs color="white">
+    <ion-tab [root]="tab1Root"
+             [rootParams]="{selectedMchtCd:selectedMchtCd, currentFastLoanMchtDeposit: currentFastLoanMchtDeposit}"
+             tabTitle="首页" tabIcon="gerenzhongxin"></ion-tab>
+    <ion-tab [root]="tab2Root" [rootParams]="{ currentFastLoanMchtDeposit: currentFastLoanMchtDeposit}" tabTitle="还款计划"
+             tabIcon="huankuanjihua"></ion-tab>
+    <ion-tab [root]="tab3Root" [rootParams]="{ currentFastLoanMchtDeposit: currentFastLoanMchtDeposit}" tabTitle="还款明细"
+             tabIcon="mingxi"></ion-tab>
+</ion-tabs>

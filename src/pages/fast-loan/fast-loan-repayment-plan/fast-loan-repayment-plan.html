@@ -1,0 +1,75 @@
+<!--
+  Generated template for the FastLoanRepaymentPlan page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header #header>
+
+    <ion-navbar hideBackButton>
+        <ion-buttons start>
+            <button ion-button clear icon-only (click)="popRoot()">
+                <ion-icon name="arrow-dropleft"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>还款计划</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <div class="content-title">
+        <ion-card class="gb-card">
+            <ion-card-header>
+                <ion-icon name="03">{{currentFastLoanMchtDeposit?.mchtName}}</ion-icon>
+            </ion-card-header>
+            <ion-card-content>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col col-4>贷款金额</ion-col>
+                        <ion-col col-8>{{fastLoanRepaymentPlan?.loanInitPrin | currencyPipe}}元</ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col col-4>账款管理费</ion-col>
+                        <ion-col col-8>{{fastLoanRepaymentPlan?.totalInterest | currencyPipe}}元
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col col-4>期数</ion-col>
+                        <ion-col col-8>{{fastLoanRepaymentPlan?.totalTerms}}</ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col col-4>总还款金额</ion-col>
+                        <ion-col col-8>{{fastLoanRepaymentPlan?.totalPayAmount | currencyPipe}}元
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-card-content>
+        </ion-card>
+    </div>
+    <div class="content-main">
+        <ion-grid>
+            <ion-row class="table-title">
+                <ion-col col-3>还款日</ion-col>
+                <ion-col col-3>当期应还本金</ion-col>
+                <ion-col col-3>当期账款管理费</ion-col>
+                <ion-col col-3>当期应还款总额</ion-col>
+            </ion-row>
+            <ion-row *ngFor="let fastLoanRepaymentSchedule of fastLoanRepaymentSchedules">
+                <ion-col col-3>{{fastLoanRepaymentSchedule?.loanPmtDueDate | stringToDate}}</ion-col>
+                <ion-col col-3>{{fastLoanRepaymentSchedule?.loanTermPrin | currencyPipe}} 元</ion-col>
+                <ion-col col-3>{{fastLoanRepaymentSchedule?.loanTermInterest | currencyPipe}} 元</ion-col>
+                <ion-col col-3>{{(fastLoanRepaymentSchedule?.loanTermPrin + fastLoanRepaymentSchedule?.loanTermInterest)
+                    | currencyPipe}} 元
+                </ion-col>
+            </ion-row>
+            <ion-infinite-scroll [hidden]="!hasMoreData" (ionInfinite)="loadMore($event)">
+                <ion-infinite-scroll-content></ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+        </ion-grid>
+    </div>
+</ion-content>

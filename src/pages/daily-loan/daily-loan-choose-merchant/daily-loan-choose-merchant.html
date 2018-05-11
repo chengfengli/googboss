@@ -1,0 +1,63 @@
+<!--
+  Generated template for the ChooseMerchant page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header #header>
+
+    <ion-navbar>
+        <ion-title>选择商户</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <button ion-item (click)="goMerchantList()" class="choose-merchant" *ngIf="!shouldShowMerchantInfo()">
+        <p>请选择商户</p>
+    </button>
+    <ion-item ion-item (click)="goMerchantList()" class="choose-merchant" *ngIf="shouldShowMerchantInfo()">
+        <ion-icon name="shengrongdanbao" item-left color="light"></ion-icon>
+        <div class="merchant-info">
+            <span color="font-dark">商户名</span><i>{{merchant?.mchtName}}</i>
+            <button ion-button icon-only clear color="primary" class="merchant-detail"
+                    (click)="goMchtDetail($event,merchant.mchtName,merchant.mchtCd)">
+                <ion-icon name="information"></ion-icon>
+            </button>
+        </div>
+        <div class="merchant-info">
+            <span color="font-dark">商户号</span>{{merchant?.mchtCd}}
+        </div>
+        <ion-icon name="rightarrow" item-right color="font-light"></ion-icon>
+    </ion-item>
+    <div class="account-box">
+        <div class="account-title">请确认您放款账户的后四位</div>
+        <div class="my-account" (click)="accountFocus()" tappable>
+            <ion-input id="account-num" [(ngModel)]="myExtraBankNo" (input)="importNum($event)"
+                       (focus)="inputNow = true" (blur)="inputNow = false" maxlength="4" type="tel"></ion-input>
+            <span>{{bankNo?.slice(0,4)}}</span>
+            <span>{{bankNo?.slice(4,8)}}</span>
+            <span>{{bankNo?.slice(8,11)}}</span>
+            <span>{{bankNo?.slice(11,-4)}}</span>
+            <input [class]="myExtraBankNo.length===0&&inputNow?'account-num active':'account-num'"
+                   [(ngModel)]="myExtraBankNo[0]" readonly/>
+            <input [class]="myExtraBankNo.length===1&&inputNow?'account-num active':'account-num'"
+                   [(ngModel)]="myExtraBankNo[1]" readonly/>
+            <input [class]="myExtraBankNo.length===2&&inputNow?'account-num active':'account-num'"
+                   [(ngModel)]="myExtraBankNo[2]" readonly/>
+            <input [class]="(myExtraBankNo.length===3 || myExtraBankNo.length===4)&&inputNow?'account-num active':'account-num'"
+                   [(ngModel)]="myExtraBankNo[3]" readonly/>
+        </div>
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-title>
+            <div class="apply-btn-box">
+                <button color="primary" full round ion-button class="submit-btn" (click)="goNext()">确认提交</button>
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-footer>
+<div class="shade" *ngIf="shouldShowShade"></div>

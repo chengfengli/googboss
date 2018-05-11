@@ -1,0 +1,71 @@
+<!--
+  Generated template for the Login page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header #header>
+    <ion-navbar style="display: none;">
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <div class="login-header">
+        <div class="bg-img">
+            <button ion-button icon-only (click)="popBack()" [hidden]="shouldHideBackButton">
+                <ion-icon name="arrow-dropleft"></ion-icon>
+            </button>
+            <ion-img [src]="backgroundImg | imgPipe"></ion-img>
+        </div>
+        <p class="header-text" color="white">轻松做老板，自在享生活</p>
+    </div>
+    <div class="content">
+        <div class="form-title">
+            <p [ngClass]="{active: isPhoneLogin}" (click)="isPhoneLogin=true" color="font-normal">用户登录</p>
+            <p [ngClass]="{active: !isPhoneLogin}" (click)="isPhoneLogin=false" color="font-normal">老用户商户号登录</p>
+        </div>
+        <form *ngIf="isPhoneLogin" [formGroup]="loginForm" (submit)="doLogin($event)" class="login-form">
+            <ion-item>
+                <ion-icon name="artboard4copy" item-left class="login-icon"></ion-icon>
+                <ion-input formControlName="mobile" type="tel" placeholder="请输入您的手机号" color="dark" [(ngModel)]="mobile">
+                </ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="mima" item-left class="login-icon" style="margin-top:0"></ion-icon>
+                <ion-input formControlName="password" type="password" placeholder="请输入您的密码" color="dark"
+                           (keydown)="preventEenter($event)" [(ngModel)]="mobilePassword">
+                </ion-input>
+                <button ion-button class="forget-pwd text-btn" color="primary" item-right (click)="goForgetPwd($event)"
+                        clear>忘记密码？
+                </button>
+            </ion-item>
+            <button ion-button type="submit" class="login-btn" round block>登录</button>
+            <div class="sign-up">
+                <div>没有账号？</div>
+                <button ion-button color="primary" (click)="goSignup($event)" clear small class="text-btn">立即注册>
+                </button>
+            </div>
+        </form>
+
+        <form *ngIf="!isPhoneLogin" [formGroup]="merchantForm" (submit)="doLogin($event)" class="login-form">
+            <ion-item>
+                <ion-icon name="artboard4copy" item-left class="login-icon"></ion-icon>
+                <ion-input formControlName="merchant" type="tel" placeholder="请输入您的商户号" color="dark"
+                           [(ngModel)]="merchantNo"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="mima" item-left class="login-icon" style="margin-top:0"></ion-icon>
+                <ion-input formControlName="password" type="password" placeholder="请输入您的密码" color="dark"
+                           (keydown)="preventEenter($event)" [(ngModel)]="merchantPassword"></ion-input>
+                <button ion-button class="forget-pwd text-btn" color="primary" item-right
+                        (click)="oldGoForgetPwd($event)" clear>忘记密码？
+                </button>
+            </ion-item>
+            <button ion-button type="submit" class="login-btn" round block>登录</button>
+            <div class="sign-up">
+                <div>没有账号？</div>
+                <button ion-button color="primary" (click)="goSignup($event)" clear small class="text-btn">立即注册>
+                </button>
+            </div>
+        </form>
+    </div>
+</ion-content>

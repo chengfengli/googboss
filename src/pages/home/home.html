@@ -1,0 +1,185 @@
+<ion-header #header>
+    <ion-navbar>
+        <ion-title>好老板</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <!--banner-->
+    <div class="banner">
+        <img [src]="banner | imgPipe" class="bg-img"/>
+        <div class="banner-text">
+            <p color="font-dark">好老板APP</p>
+            <p color="font-normal">给您贴心的服务，做您口袋里的财资管家!</p>
+            <p color="white">
+                流水对账<span>|</span>财务分析<span>|</span>信用融资<span>|</span>流水提现
+            </p>
+        </div>
+    </div>
+    <div class="board" *ngIf="boardTitles.length > 0">
+        <ul>
+            <li [@myBoard]="changeBoardStatus(i)" *ngFor="let item of boardTitles;let i = index"
+                (click)="goBoardDetail(item.tid)" tappable>
+                <ion-icon name="remind">{{item.title}}</ion-icon>
+            </li>
+        </ul>
+    </div>
+    <div class="content">
+        <!--通联专享-->
+        <div class="forAllinpay">
+            <div class="box-header">
+                <ion-icon name='tuijian'>通联商户专享</ion-icon>
+                <button ion-button color="primary" (click)="goJoinAllinpay()">我要成为通联商户</button>
+            </div>
+            <!--天天融-->
+            <!--天天融未开通账户-->
+            <ion-card class="ttr-card no-dredge-card" (click)="goTTR()" *ngIf="shouldShowDailyLoanIntro()" tappable>
+                <img [src]="ttrBackground | imgPipe" class="bg-img"/>
+                <div class="card-main">
+                    <ion-card-header>
+                        <ion-icon name="jinrongleiicontubiao-1" color="font-dark">天天融</ion-icon>
+                    </ion-card-header>
+                    <ion-card-content>
+                        <ion-grid>
+                            <ion-row>
+                                <ion-col width-33 class="row-left">
+                                    <ion-row>
+                                        <span color="primary">1,000,000</span>
+                                        <span>元</span>
+                                    </ion-row>
+                                    <ion-row>最高可提现</ion-row>
+                                </ion-col>
+                                <ion-col width-67 class="row-right">
+                                    <ion-row>自助申请，当日流水随时提现！</ion-row>
+                                    <ion-row>
+                                        <ion-col width-50>
+                                            <ion-icon name='kuaisudaozhang-copy'>实时到账</ion-icon>
+                                        </ion-col>
+                                        <ion-col width-50>
+                                            <ion-icon name='shijian-copy'>T+0</ion-icon>
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-card-content>
+                </div>
+            </ion-card>
+
+
+            <!--天天融已开通账户-->
+            <ion-card class="ttr-card have-dredge-card" *ngIf="!shouldShowDailyLoanIntro()">
+                <ion-card-header tappable (click)="goTTR()">
+                    <ion-icon name="jinrongleiicontubiao-1" color="font-dark">天天融</ion-icon>
+                    <button ion-button clear class="text-btn">了解天天融
+                        <ion-icon name="help"></ion-icon>
+                    </button>
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-grid>
+                        <ion-row *ngFor="let dailyLoanMerchant of dailyLoanMerchants" tappable
+                                 (click)="goToDailyLoanApplyStatusPage(dailyLoanMerchant)">
+                            <p>{{dailyLoanMerchant?.mchtName}}</p>
+                            <p *ngIf="shouldShowSuccess(dailyLoanMerchant)">当前可提现<span class="cash-font">{{dailyLoanMerchant?.deposit?.withDrawalsAllowoAmt | currencyPipe}}</span>元
+                            </p>
+                            <button ion-button clear class="text-btn" *ngIf="shouldShowGoToApply(dailyLoanMerchant)">
+                                暂未开通，去开通
+                            </button>
+                            <p *ngIf="dailyLoanMerchant?.dailyLoan !== null && dailyLoanMerchant?.dailyLoan?.applyStatus !== 'S'">
+                                {{dailyLoanMerchant?.dailyLoan?.applyStatus | dailyLoanApplyStatusPipe}}</p>
+                        </ion-row>
+                    </ion-grid>
+                </ion-card-content>
+            </ion-card>
+
+            <!--快快贷-->
+            <!--快快贷未开通用户-->
+            <ion-card class="kkd-card no-dredge-card" (click)="goKKD()" *ngIf="shouldShowFastLoanIntro()" tappable>
+                <img [src]="kkdBackground | imgPipe" class="bg-img"/>
+                <div class="card-main">
+                    <ion-card-header>
+                        <ion-icon name="jinrongleiicontubiao" color="font-dark">快快贷</ion-icon>
+                    </ion-card-header>
+                    <ion-card-content>
+                        <ion-grid class="no-dredge-grid">
+                            <ion-row>
+                                <ion-col width-33 class="row-left">
+                                    <ion-row>
+                                        <span color="primary">1,000,000</span>
+                                        <span>元</span>
+                                    </ion-row>
+                                    <ion-row>最高可贷</ion-row>
+                                </ion-col>
+                                <ion-col width-67 class="row-right">
+                                    <ion-row>最快五分钟，极速放款！</ion-row>
+                                    <ion-row>
+                                        <ion-col width-67>
+                                            <ion-icon name='assessedbadge'>无抵押无担保</ion-icon>
+                                        </ion-col>
+                                        <ion-col width-33>
+                                            <ion-icon name='kuaisufangkuan'>放款快</ion-icon>
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-card-content>
+                </div>
+            </ion-card>
+
+            <!--快快贷已开通用户-->
+            <ion-card class="kkd-card have-dredge-card" *ngIf="!shouldShowFastLoanIntro()">
+                <ion-card-header (click)="goKKD()" tappable>
+                    <ion-icon name="jinrongleiicontubiao" color="font-dark">快快贷</ion-icon>
+                    <button ion-button clear class="text-btn">了解快快贷
+                        <ion-icon name="help"></ion-icon>
+                    </button>
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-grid>
+                        <ion-row *ngFor="let fastLoanMerchant of fastLoanMerchants"
+                                 (click)="goToFastLoanApplyStatusPage(fastLoanMerchant)" tappable>
+                            <p>{{fastLoanMerchant?.mchtName}}</p>
+                            <div *ngIf="showBillInfo(fastLoanMerchant)">
+                                <p *ngIf="shouldCurrentShowRepayment(fastLoanMerchant)">当前应还金额<span class="cash-font">{{fastLoanMerchant?.deposit?.curNeedRepayedTotalAmt | currencyPipe}}</span>元
+                                </p>
+                                <p *ngIf="!shouldCurrentShowRepayment(fastLoanMerchant)">下期应还金额<span class="cash-font">{{fastLoanMerchant?.deposit?.ntdRepaymentAmt | currencyPipe}}</span>元
+                                </p>
+                                <p *ngIf="!shouldCurrentShowRepayment(fastLoanMerchant)">下期还款时间<span>{{fastLoanMerchant?.deposit?.ntdRepaymentDate | stringToDate}}</span>
+                                </p>
+                            </div>
+                            <p *ngIf="shouldShowPaymentStatus(fastLoanMerchant)">
+                                {{fastLoanMerchant?.application?.loanCashedStatus | fastLoanPaymenStatusPipe}}</p>
+                            <button ion-button clear class="text-btn" *ngIf="fastLoanMerchant?.application === null">
+                                暂未开通，去开通
+                            </button>
+                            <p *ngIf="shouldShowApplyStatus(fastLoanMerchant)">
+                                {{fastLoanMerchant?.application?.applyStatus | fastLoanApplyStatusPipe}}</p>
+                        </ion-row>
+                    </ion-grid>
+                </ion-card-content>
+            </ion-card>
+
+        </div>
+        <!--更多-->
+        <div class="more">
+            <div class="box-header">
+                <ion-icon name='icon'>更多</ion-icon>
+            </div>
+            <ion-card class="syj-card" (click)="goSyj()" tappable>
+                <img [src]='syjBackground | imgPipe' class="bg-img"/>
+                <div class="card-main">
+                    <ion-card-header>
+                        <ion-icon name="icon-training">生e经</ion-icon>
+                    </ion-card-header>
+                    <ion-card-content color="font-normal">
+                        <ion-row>随时查看，尽在掌握！</ion-row>
+                        <ion-row>流水／账单／经营状况</ion-row>
+                    </ion-card-content>
+                </div>
+            </ion-card>
+        </div>
+    </div>
+</ion-content>

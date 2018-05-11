@@ -1,0 +1,67 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/v2/theming/
+$font-path: "../assets/fonts";
+@import "ionic.globals";
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+$colors: (primary: #f45e3b, font-normal:#666666, font-light: #999999, font-dark: #333333, secondary: #47B8F3, light: #41C895, white: #ffffff, danger: #EC3D38, wait: #E8BF57,);
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+$toolbar-ios-background: #f45e3b;
+$loading-ios-spinner-color: #fff;
+$loading-ios-border-radius: 3px;
+$loading-ios-text-color: #fff;
+$loading-ios-background: rgba(0, 0, 0, 0.5);
+$loading-ios-padding: 0;
+$tabs-ios-tab-icon-size: 22px;
+$action-sheet-ios-button-text-color: #72DDAA;
+// $toolbar-ios-height: 59px; //default: 44px
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+$toolbar-md-background: #f45e3b;
+$loading-md-spinner-color: #fff;
+$loading-md-border-radius: 3px;
+$loading-md-text-color: #fff;
+$loading-md-background: rgba(0, 0, 0, 0.5);
+$loading-md-padding: 0;
+$tabs-md-tab-icon-size: 22px;
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+$toolbar-wp-background: #f45e3b;
+$loading-wp-spinner-color: #fff;
+$loading-wp-border-radius: 3px;
+$loading-wp-text-color: #fff;
+$loading-wp-background: rgba(0, 0, 0, 0.5);
+$loading-wp-padding: 0;
+$tabs-wp-tab-icon-size: 22px;
+$text-input-ios-highlight-color: #f45e3b;
+$text-input-md-highlight-color: #f45e3b;
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+@import "ionic.theme.default";
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/v2/ionicons/
+@import "ionicons";
+// Fonts
+// --------------------------------------------------
+@import "roboto";
+@import "noto-sans";

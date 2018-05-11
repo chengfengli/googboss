@@ -1,0 +1,81 @@
+page-choose-payment-modal {
+  ion-header {
+    display: none;
+  }
+  .content {
+    background-color: rgba(0, 0, 0, 0);
+    ion-card {
+      height: 45%;
+      @include responsive(sm) {
+        height: 53%;
+      }
+      position: absolute;
+      bottom: 0;
+      margin-bottom: 0;
+      ion-card-header {
+        border-bottom: 1px solid #dcdcdc;
+        position: relative;
+        p {
+          text-align: center;
+          font-size: 16px;
+          font-weight: normal;
+          color: #000;
+        }
+        .button {
+          position: absolute;
+          right: 0;
+          top: 4px;
+          font-size: 14px;
+        }
+      }
+      ion-card-content {
+        padding: 0;
+        .radio-box {
+          border-bottom: 1px solid #e5e5e5;
+          & > .item {
+            min-height: 60px;
+            padding-left: 25px;
+            &:last-child {
+              .item-inner {
+                border-bottom: none;
+              }
+            }
+            .item-inner {
+              border-bottom: 1px solid #e5e5e5;
+            }
+            ion-icon {
+              font-size: 20px;
+              min-height: 0;
+            }
+            .label {
+              margin-top: 15px;
+              margin-bottom: 15px;
+              & > div {
+                img {
+                  width: 150px;
+                }
+              }
+            }
+            &:nth-child(1) {
+              .label {
+                img {
+                  margin-left: -10px;
+                }
+              }
+            }
+            &:nth-child(2) {
+              .label {
+                img {
+                  width: 130px;
+                }
+              }
+            }
+          }
+        }
+      }
+      .submit-btn {
+        margin-top: 27px;
+      }
+    }
+  }
+}

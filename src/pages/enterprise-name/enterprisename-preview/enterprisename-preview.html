@@ -1,0 +1,17 @@
+<ion-content [ngStyle]="{'background':'#54CCAD url('+background+')','background-size':'100% 100%'}">
+    <ion-header style="margin-top: 15px;">
+        <ion-navbar>
+            <ion-title>名片预览</ion-title>
+        </ion-navbar>
+    </ion-header>
+    <ion-content>
+        <iframe [height]="height" data-tap-disabled="true" [src]="browser.secUrl"></iframe>
+    </ion-content>
+    <ion-footer>
+        <ion-navbar>
+            <ion-title>
+                <button id="next" outline ion-button (click)="submit()">提交审核</button>
+            </ion-title>
+        </ion-navbar>
+    </ion-footer>
+</ion-content>

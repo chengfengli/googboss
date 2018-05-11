@@ -1,0 +1,43 @@
+page-discover-home {
+  .content {
+    background-color: #efeff4;
+    .scroll-content {
+      padding-top: 10px;
+    }
+    ion-list {
+      margin-bottom: 19px;
+      ion-list-header {
+        background-color: #fff;
+        border-bottom-color: #dcdcdc;
+        border-top: 0.55px solid #dcdcdc;
+        ion-icon {
+          font-size: 16px;
+          color: #033333;
+          margin-top: 3px;
+          &:before {
+            font-size: 30px;
+          }
+        }
+      }
+      button.item {
+        ion-icon {
+          font-size: 28px;
+          color: #f5b48d;
+        }
+        .item-inner {
+          border-bottom-color: #e5e5e5;
+          .label {
+            font-size: 13px;
+            color: map-get($colors, 'font-normal');
+          }
+        }
+        &:last-child {
+          border-bottom-color: #dcdcdc;
+        }
+        &.item-block:first-child {
+          border-top-color: #dcdcdc;
+        }
+      }
+    }
+  }
+}

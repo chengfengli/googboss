@@ -1,0 +1,150 @@
+<!--
+  Generated template for the TtrMerchantList page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header #header>
+
+    <ion-navbar>
+        <ion-buttons start>
+            <button ion-button clear icon-only (click)="popRoot()">
+                <ion-icon name="arrow-dropleft"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>天天融</ion-title>
+        <ion-buttons end>
+            <button ion-button clear icon-only (click)="goToSettings()">
+                <ion-icon name="set" style="font-size:19px"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <div class="content-title">
+        <ion-slides spaceBetween="-40%" (ionSlideDidChange)="slideChanged()">
+            <ion-slide [@slideState]="toogleSlideState(dailyLoanDeposit)"
+                       *ngFor="let dailyLoanDeposit of dailyLoanDeposits;let i = index">
+                <ion-card>
+                    <ion-card-header>
+                        <h5 color="primary" class="merchant-name-box">
+                            <ion-icon name="03" class="my-merchant-name">{{dailyLoanDeposit?.mchtName}}</ion-icon>
+                            <button ion-button icon-only clear color="primary" class="merchant-detail"
+                                    *ngIf="showMchtName(i)"
+                                    (click)="goMchtDetail($event,dailyLoanDeposit.mchtName,dailyLoanDeposit.mchtCd)">
+                                <ion-icon name="information"></ion-icon>
+                            </button>
+                        </h5>
+                        <div class="card-tab-box">
+                            <button ion-button clear color="font-normal" [ngClass]="nowTab=='property'?'active':''"
+                                    (click)="nowTabProperty()">资产信息
+                            </button>
+                            <p></p>
+                            <button ion-button clear color="font-normal" [ngClass]="nowTab=='withdraw'?'active':''"
+                                    (click)="nowTabWithdraw()">提现记录
+                            </button>
+                        </div>
+                    </ion-card-header>
+                    <ion-card-content *ngIf="nowTab=='property'">
+                        <ion-row>
+                            <p color="primary">当前可提现金额</p>
+                        </ion-row>
+                        <ion-row>
+                            <p color="primary"><span>¥</span>{{dailyLoanDeposit?.withDrawalsAllowoAmt | currencyPipe}}
+                            </p>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col col-6>
+                                <p color="font-normal">{{dailyLoanDeposit?.totalAmt | currencyPipe}}</p>
+                                <p color="font-light">今日交易流水总额</p>
+                            </ion-col>
+                            <ion-col col-6>
+                                <p color="font-normal">{{dailyLoanDeposit?.withDrawal | currencyPipe}}</p>
+                                <p color="font-light">已提现金额</p>
+                            </ion-col>
+                        </ion-row>
+                    </ion-card-content>
+                </ion-card>
+                <button ion-button class="submit-btn" block round color="primary" *ngIf="nowTab=='property'"
+                        (click)="goToWithdraw(dailyLoanDeposit)">立即提现
+                </button>
+            </ion-slide>
+        </ion-slides>
+    </div>
+    <div class="content-main">
+        <div class="property-box" *ngIf="nowTab=='property'">
+            <ion-card class="gb-card">
+                <ion-card-header>
+                    <ion-icon name="jinrongleiicontubiao-4">限额及费率</ion-icon>
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-row>
+                        <p>今日限额</p>
+                        <p>{{currentDailyLoanDeposit?.dayQuota | currencyPipe}}元</p>
+                    </ion-row>
+                    <ion-row>
+                        <p>日管理费率</p>
+                        <p>{{currentDailyLoanDeposit?.managementRate | dailyCurrencyRatesPipe:'1'}}</p>
+                    </ion-row>
+                    <ion-row>
+                        <p>单笔最低提现金额</p>
+                        <p>{{currentDailyLoanDeposit?.singleAmt | currencyPipe}}元</p>
+                    </ion-row>
+                    <ion-row>
+                        <p>单笔提现手续费</p>
+                        <p>{{currentDailyLoanDeposit?.commissionAmt | currencyPipe}}元</p>
+                    </ion-row>
+                </ion-card-content>
+            </ion-card>
+        </div>
+        <div class="withdraw-box" *ngIf="nowTab=='withdraw'">
+            <ion-card class="gb-card">
+                <ion-row class="date-pick">
+                    <ion-icon name="04" item-left color="primary"></ion-icon>
+                    <ion-item>
+                        <ion-datetime displayFormat="YYYY-MM-DD" doneText="确定" cancelText="取消" placeholder="开始时间"
+                                      pickerFormat="YYYY-MM-DD" [(ngModel)]="startDate"></ion-datetime>
+                    </ion-item>
+                    <p>~</p>
+                    <ion-item>
+                        <ion-datetime displayFormat="YYYY-MM-DD" doneText="确定" cancelText="取消" placeholder="结束时间"
+                                      pickerFormat="YYYY-MM-DD" [(ngModel)]="endsDate"></ion-datetime>
+                    </ion-item>
+                    <button ion-button clear item-right color="font-normal" (click)="filterRecords()">筛选</button>
+                </ion-row>
+            </ion-card>
+            <ion-grid>
+                <ion-row class="deal-list-title">
+                    <ion-col col-3>
+                        <p>交易时间</p>
+                    </ion-col>
+                    <ion-col col-3>
+                        <p>申请金额</p>
+                    </ion-col>
+                    <ion-col col-3>
+                        <p>到账金额</p>
+                    </ion-col>
+                    <ion-col col-3>
+                        <p>申请状态</p>
+                    </ion-col>
+                </ion-row>
+                <ion-row *ngFor="let record of withdrawRecords">
+                    <ion-col col-3>{{record?.applyTime}}</ion-col>
+                    <ion-col col-3>{{record?.applyAmount | currencyPipe}}</ion-col>
+                    <ion-col col-3>{{record?.arrivalAmount | currencyPipe}}</ion-col>
+                    <ion-col col-3>{{record?.applyStatus | withdrawApplyStatusPipe}}</ion-col>
+                </ion-row>
+                <ion-infinite-scroll [hidden]="!hasMoreData" (ionInfinite)="loadMore($event)">
+                    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+                </ion-infinite-scroll>
+            </ion-grid>
+        </div>
+    </div>
+</ion-content>
+<div class="shade" *ngIf="shouldShowShade"></div>

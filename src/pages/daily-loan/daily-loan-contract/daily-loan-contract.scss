@@ -1,0 +1,35 @@
+page-daily-loan-contract {
+  h5,
+  h6 {
+    text-align: center;
+    color: #333;
+  }
+  h5 {
+    font-size: 16px;
+  }
+  h6 {
+    font-size: 14px;
+  }
+  p {
+    line-height: 24px;
+    font-size: 14px;
+    color: #333;
+    &.text-title {
+      color: #333;
+      font-weight: bold;
+      font-size: 13px;
+    }
+    &.bold-text {
+      color: #333;
+      font-weight: bold;
+    }
+  }
+  .footer {
+    .toolbar {
+      min-height: 66px;
+    }
+    .title {
+      padding: 0
+    }
+  }
+}

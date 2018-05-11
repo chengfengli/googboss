@@ -1,0 +1,107 @@
+<!--
+  Generated template for the FastLoanRepayment page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header #header>
+
+    <ion-navbar>
+        <ion-title>立即还款</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-item class="merchant-item">
+        <ion-icon name="shengrongdanbao" color="light" item-left></ion-icon>
+        <div class="merchant-info">
+            <p><span>商户名</span><i>{{fastLoanMchtDeposit?.mchtName}}</i>
+                <button ion-button icon-only clear color="primary" class="merchant-detail" (click)="goMchtDetail($event,fastLoanMchtDeposit.mchtName,fastLoanMchtDeposit.mchtCd)">
+                    <ion-icon name="information"></ion-icon>
+                </button>
+            </p>
+        </div>
+    </ion-item>
+    <ion-card class="gb-card">
+        <ion-card-header>
+            <ion-item>
+                <ion-label color="font-dark">输入还款金额</ion-label>
+                <ion-input placeholder="最大限额50000.00" color="font-light" [(ngModel)]="repaymentAmount" type="number" (input)="changeAmount()"></ion-input>
+            </ion-item>
+            <p class="unit">元</p>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-row>
+                <ion-col col-5>当前应还金额</ion-col>
+                <ion-col col-7>{{fastLoanMchtDeposit?.deposit?.curNeedRepayedTotalAmt | currencyPipe}}元</ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col col-5>当前剩余应还金额</ion-col>
+                <ion-col col-4>{{fastLoanRealtimePayment?.leftPayAmt | currencyPipe}} 元</ion-col>
+                <ion-col col-3>
+                    <button [ngStyle]="{'border-color':nowRepaymentMethod === 'full'?'#f45e3b':'#b5b5b5','color':nowRepaymentMethod === 'full'?'#f45e3b':'#666'}" ion-button clear class="text-btn" color="font-normal" (click)="toogleFullRepayment()">全额还款
+                    </button>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col col-5></ion-col>
+                <ion-col col-4>最低还款金额<span>{{fastLoanMchtDeposit?.deposit?.ctdLowRepaymentAmt | currencyPipe}}元</span>
+                </ion-col>
+                <ion-col col-3>
+                    <button [ngStyle]="{'border-color':nowRepaymentMethod === 'minimum'?'#f45e3b':'#b5b5b5','color':nowRepaymentMethod === 'minimum'?'#f45e3b':'#666'}" ion-button clear class="text-btn" color="font-normal" (click)="toogleMinimumPayment()">最低还款
+                    </button>
+                </ion-col>
+            </ion-row>
+        </ion-card-content>
+    </ion-card>
+    <ion-card class="gb-card">
+        <ion-card-content>
+            <ion-row>
+                <ion-col col-5>当期已还金额</ion-col>
+                <ion-col col-7 *ngIf="shouldShowDetail(fastLoanRealtimePayment)">
+                    {{(fastLoanRealtimePayment?.tltPayAmt+fastLoanRealtimePayment?.onlinePayAmt+fastLoanRealtimePayment?.offlinePayAmt) | currencyPipe}} 元
+                </ion-col>
+                <ion-col col-7 *ngIf="!shouldShowDetail(fastLoanRealtimePayment)">
+                    {{(fastLoanRealtimePayment?.posPayAmt+fastLoanRealtimePayment?.tltPayAmt+fastLoanRealtimePayment?.onlinePayAmt+fastLoanRealtimePayment?.offlinePayAmt) | currencyPipe}} 元
+                </ion-col>
+            </ion-row>
+            <ion-row *ngIf="!shouldShowDetail(fastLoanRealtimePayment)">
+                <ion-col col-5>-POS流水还款</ion-col>
+                <ion-col col-7>{{fastLoanRealtimePayment?.posPayAmt | currencyPipe}} 元</ion-col>
+            </ion-row>
+            <ion-row *ngIf="shouldShowDetail(fastLoanRealtimePayment)">
+                <ion-col col-5>-POS流水还款</ion-col>
+                <ion-col col-7>尚未清算，工作日预计中午完成清算</ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col col-5>-银行代扣还款</ion-col>
+                <ion-col col-7>{{fastLoanRealtimePayment?.tltPayAmt | currencyPipe}} 元</ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col col-5>-在线支付还款</ion-col>
+                <ion-col col-7>{{fastLoanRealtimePayment?.onlinePayAmt | currencyPipe}} 元</ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col col-5>-线下还款</ion-col>
+                <ion-col col-7>{{fastLoanRealtimePayment?.offlinePayAmt | currencyPipe}} 元</ion-col>
+            </ion-row>
+        </ion-card-content>
+    </ion-card>
+    <p class="warning-text" color="font-light">注：剩余还款额（因部分通道还款会有延迟，仅供参考）,可下拉屏幕刷新数据</p>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-title>
+            <div class="apply-btn-box">
+                <button ion-button class="submit-btn" block color="primary" round (click)="gotoRepayment()">立即还款
+                </button>
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-footer>
+<div class="shade" *ngIf="shouldShowShade"></div>

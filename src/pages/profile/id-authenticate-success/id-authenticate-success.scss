@@ -1,0 +1,36 @@
+page-id-authenticate-success {
+  .content {
+    background-color: #efeff4;
+    .gb-card {
+      &:nth-child(1) {
+        height: 9rem;
+        @include flex-box;
+        @include justify-content();
+        @include align-items();
+        ion-icon {
+          &:before {
+            color: #f45e3b;
+            font-size: 30px;
+            margin-right: 12px;
+            vertical-align: middle;
+          }
+        }
+      }
+      &:nth-child(2) {
+        ion-item {
+          border-bottom: 1px solid #efeff4;
+          height: 3.5em;
+          &:last-child {
+            border-bottom: none;
+          }
+          .left-item {
+            color: #666;
+          }
+          .right-item {
+            color: #999;
+          }
+        }
+      }
+    }
+  }
+}

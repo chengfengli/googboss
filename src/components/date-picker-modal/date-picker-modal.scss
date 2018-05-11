@@ -1,0 +1,92 @@
+page-date-picker-modal {
+  .scroll-content {
+    overflow-y: visible;
+  }
+  .content {
+    background-color: rgba(0, 0, 0, 0);
+    .scroll-content {
+      @include flex-box;
+      @include flex-direction();
+    }
+    .content-box {
+      background-color: #fff;
+      padding: 16px;
+      // padding-bottom:0;
+      padding-top: 0;
+      @include flex;
+      overflow-y: scroll;
+    }
+  }
+  .dismiss-btn-box {
+    opacity: 0;
+    width: 100%;
+    &.ios {
+      height: 121px;
+    }
+    &.android {
+      height: 101px;
+    }
+  }
+  .time-tabs {
+    border-bottom: 0.55px solid #e5e5e5;
+    @include justify-content(space-around);
+    margin-bottom: 14px;
+    width: calc(100% + 32px);
+    margin-left: -16px;
+    p {
+      font-size: 12px;
+      padding: 8px 20px;
+      color: map-get($colors, 'font-normal');
+      border: 0.55px solid #dcdcdc;
+      border-radius: 35px;
+      @include responsive(sm) {
+        padding: 6px 14px;
+      }
+      &.active {
+        color: map-get($colors, 'primary');
+        border-color: map-get($colors, 'primary');
+      }
+    }
+  }
+  .timeType {
+    border-bottom: #e5e5e5 1px solid;
+    width: calc(100% + 32px);
+    margin-left: -16px;
+    padding-bottom: 14px;
+    position: relative;
+    margin-bottom: 5px;
+    .line {
+      position: absolute;
+      width: 1px;
+      height: 36px;
+      left: 50%;
+      top: 50%;
+      margin-top: -25px;
+      background-color: #e5e5e5;
+    }
+    .col {
+      p {
+        margin: 0;
+        text-align: center;
+        &:first-child {
+          color: map-get($colors, "font-dark");
+          font-size: 15px;
+          margin-bottom: 8px;
+        }
+        &:last-child {
+          color: map-get($colors, "font-light");
+          font-size: 12px;
+        }
+        &.active {
+          color: map-get($colors, "primary");
+        }
+      }
+    }
+  }
+  .btn-box {
+    margin-bottom: 20px;
+    button {
+      width: 45%;
+    }
+  }
+}

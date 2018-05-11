@@ -1,0 +1,11 @@
+page-signup {
+  .agree-provision {
+    margin-top: 13rem;
+    @include responsive(sm) {
+      margin-top: 5rem;
+    }
+  }
+  .login-btn {
+    margin-top: 3.8rem;
+  }
+}

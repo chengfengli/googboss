@@ -1,0 +1,65 @@
+page-today-funds-details {
+  .scroll-content {
+    @include flex-box;
+    @include flex-direction();
+    background-color: #f8f8f9;
+    .transaction-title {
+      padding: 24px 14px 10px;
+      border-bottom: 1px solid #e5e5e5;
+      ion-row {
+        @include align-items();
+        color: map-get($colors, 'font-dark');
+        margin-bottom: 11px;
+        font-size: 14px;
+        span {
+          margin-left: 32px;
+        }
+        &:nth-child(1) {
+          span {
+            font-size: 13px
+          }
+        }
+      }
+    }
+    .transaction-content {
+      @include flex();
+      border-top: 1px solid #e5e5e5;
+      .warning-text {
+        font-size: 11px;
+        color: map-get($colors, 'font-light');
+        margin-top: 30px;
+        padding: 0 14px;
+      }
+      ion-grid {
+        padding: 0;
+        ion-row {
+          color: map-get($colors, 'font-light');
+          font-size: 12px;
+          padding-left: 12%;
+          padding-right: 20%;
+          padding-top: 20px;
+          padding-bottom: 10px;
+          border-bottom: 1px solid #e5e5e5;
+          ion-col {
+            padding: 0;
+            &:nth-child(2) {
+              text-align: right;
+            }
+          }
+          &:nth-child(1) {
+            font-size: 13px;
+            color: map-get($colors, 'font-dark');
+            padding-top: 17px;
+            padding-bottom: 14px;
+            padding-right: 15%;
+            ion-col {
+              &:nth-child(1) {
+                border-right: 1px solid #e5e5e5;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,106 @@
+page-more-home {
+  .content {
+    background-color: #efeff4;
+    .scroll-content {
+      padding-top: 10px;
+    }
+    ion-list {
+      margin-bottom: 19px;
+      ion-list-header {
+        background-color: #fff;
+        border-bottom-color: #dcdcdc;
+        border-top: 0.55px solid #dcdcdc;
+        ion-icon {
+          font-size: 16px;
+          color: #033333;
+          margin-top: 3px;
+          &:before {
+            font-size: 30px;
+          }
+        }
+      }
+      button.item {
+        ion-icon {
+          font-size: 28px;
+        }
+        .item-inner {
+          border-bottom-color: #e5e5e5;
+          .label {
+            font-size: 13px;
+            color: map-get($colors, 'font-normal');
+          }
+        }
+        &:last-child {
+          border-bottom-color: #dcdcdc;
+        }
+        &.item-block:first-child {
+          border-top-color: #dcdcdc;
+        }
+      }
+      &:nth-child(1) {
+        ion-icon {
+          margin-right: 3px;
+          &:before {
+            color: #9cda8d;
+          }
+        }
+      }
+      &:nth-child(2) {
+        margin-bottom: 10px;
+        p {
+          margin: 0;
+          font-size: 10px;
+          color: map-get($colors, 'font-light');
+        }
+        ion-list-header {
+          font-weight: normal;
+          ion-icon {
+            &:before {
+              color: #9daebe;
+            }
+          }
+        }
+        button {
+          &:nth-child(2) {
+            ion-icon {
+              color: #ffa392;
+            }
+          }
+          &:nth-child(3) {
+            ion-icon {
+              color: #b9bce9;
+            }
+          }
+        }
+      }
+      &:nth-child(3) {
+        button {
+          &:nth-child(1) {
+            ion-icon {
+              color: #8ACDA4;
+            }
+          }
+          &:nth-child(2) {
+            ion-icon {
+              color: #fdc151;
+            }
+          }
+          &:nth-child(2) {
+            ion-icon {
+              color: #5d6872;
+            }
+          }
+        }
+      }
+    }
+    .submit-btn {
+      margin-top: 130px;
+      @include responsive(sm) {
+        margin-top: 50px;
+      }
+      @include responsive(lg) {
+        margin-top: 160px;
+      }
+    }
+  }
+}

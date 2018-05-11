@@ -1,0 +1,53 @@
+enterprisename-selecttemplate {
+  .col {
+    padding: 0;
+  }
+  .content-ios {
+    background-color: #54CCAD;
+  }
+  #title {
+    text-align: center;
+  }
+  /*下一步按钮*/
+  #next {
+    width: 84%;
+    margin-left: 8%;
+    height: 45px;
+  }
+  #next:active {
+    background: transparent;
+  }
+  .button-ios {
+    background: transparent;
+    border-radius: 50px;
+    border-color: #fff;
+    color: #fff;
+    height: 54px;
+  }
+  .button-ios.activated {
+    background-color: transparent;
+  }
+  .button-ios.activated {
+    background-color: transparent;
+  }
+  .button-outline-ios.activated {
+    background: transparent;
+  }
+  ion-slides {
+    margin-top: -12px;
+  }
+  .swiper-container {
+    overflow: visible;
+  }
+  .swiper-pagination-fraction,
+  .swiper-pagination-custom,
+  .swiper-container-horizontal > .swiper-pagination-bullets {
+    top: 97%;
+  }
+  ion-slides {
+    height: 80%;
+  }
+  .swiper-pagination-bullet-active {
+    background: #fff;
+  }
+}

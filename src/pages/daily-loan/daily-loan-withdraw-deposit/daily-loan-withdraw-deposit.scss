@@ -1,0 +1,93 @@
+page-daily-loan-withdraw-deposit {
+  .apply-btn-box {
+    background-color: #efeff4;
+  }
+  .content {
+    background-color: #efeff4;
+    .money-input-box {
+      border-top: 1px solid #e5e5e5;
+      border-bottom: 1px solid #dcdcdc;
+      background-color: #fff;
+      height: 9rem;
+      padding: 0 15px;
+      p {
+        margin-bottom: 10px;
+        margin-top: 20px;
+        font-size: 11px;
+      }
+      .cash-box {
+        font-size: 30px;
+        @include flex-box;
+        span {
+          margin-right: 18px;
+          line-height: 58px;
+        }
+      }
+    }
+    ion-item {
+      .item-inner {
+        border: none !important;
+      }
+      &:nth-child(1) {
+        border-bottom: 1px solid #e5e5e5;
+        margin-bottom: 1rem;
+        height: 7rem;
+        ion-icon {
+          font-size: 35px;
+          margin-right: 11px;
+          margin-top: 0;
+        }
+        .merchant-info {
+          color: map-get($colors, 'font-normal');
+          font-size: 12px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          @include flex-box;
+          @include align-items();
+          span {
+            font-size: 16px;
+            margin-right: 16px;
+          }
+          &:nth-child(1) {
+            margin-bottom: 6px;
+            span {
+              &:nth-child(1) {
+                min-width: 52px;
+              }
+              &:nth-child(2) {
+                font-size: 14px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                margin-right: 0;
+              }
+            }
+          }
+          &:nth-child(2) {
+            font-size: 12px;
+            span {
+              font-size: 13px;
+            }
+          }
+        }
+      }
+      &:nth-child(3) {
+        min-height: 3rem;
+        font-size: 11px;
+        p {
+          span {
+            margin-left: 6px;
+            margin-right: 4px;
+          }
+        }
+      }
+    }
+    .warm-text {
+      padding: 0 16px;
+      margin-top: 1.8rem;
+      line-height: 24px;
+      font-size: 12px;
+      margin-bottom: 4rem;
+    }
+  }
+}

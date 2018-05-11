@@ -1,0 +1,32 @@
+<!--
+  Generated template for the BindPhone page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header #header>
+
+    <ion-navbar>
+        <ion-title>绑定手机</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <p class="bind-title" color="font-light">您还未绑定手机号，请绑定手机号</p>
+    <form [formGroup]="myForm">
+        <ion-list class="gb-form">
+            <ion-item>
+                <ion-input formControlName="mobile" placeholder="请输入手机号码" [(ngModel)]="myMobile" type="tel"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input formControlName="verCode" type="tel" placeholder="请输入验证码"></ion-input>
+                <button ion-button item-right color="primary" class="getCode" (click)="sendCode($event)">获取验证码</button>
+            </ion-item>
+        </ion-list>
+    </form>
+    <button color="primary" type="submit" round class="login-btn" ion-button block (click)="bindPhone($event)">确认绑定此手机
+    </button>
+</ion-content>
+<div class="shade" *ngIf="shouldShowShade"></div>

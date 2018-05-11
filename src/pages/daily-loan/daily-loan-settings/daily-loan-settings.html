@@ -1,0 +1,55 @@
+<!--
+  Generated template for the TtrSettings page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header #header>
+
+    <ion-navbar>
+        <ion-title>设置</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-card class="gb-card">
+        <ion-card-header>
+            <ion-item>
+                <ion-icon item-left name="tixian" color="primary"></ion-icon>
+                <p color="font-dark" item-left>POS机反向交易状态</p>
+                <p color="primary" item-right>{{dailyLoanAntiTransactionStatus?.retCode | dailyLoanAntiTransactionStatusPipe}}
+                </p>
+            </ion-item>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-item>
+                <p color="font-light">注：假如您有客户退款需求请申请打开反向交易，反向交易打开时将不允许天天融提现。完成反向交易完成后，如需继续提现请关闭反向交易。</p>
+            </ion-item>
+            <ion-item>
+                <ion-grid *ngIf="shouldShowApplyStatus()">
+                    <ion-row>
+                        <ion-col color="font-dark" col-5 item-left>操作</ion-col>
+                        <ion-col color="font-dark" col-5 item-right>申请结果</ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col col-5 item-left>{{dailyLoanAntiTransactionApplyStatus?.operType | dailyLoanAntiTransactionApplyTypePipe}}
+                        </ion-col>
+                        <ion-col col-5 item-right>{{dailyLoanAntiTransactionApplyStatus?.proStatus | dailyLoanAntiTransactionApplyStatusPipe}}
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+    <button ion-button class="login-btn" round block style="margin-top: 40px;" (click)="goToOpen($event)" *ngIf="shouldShowOpen()">申请开启
+    </button>
+    <button ion-button class="login-btn" round block style="margin-top: 40px;" (click)="goToClose($event)" *ngIf="shouldShowClose()">申请关闭
+    </button>
+    <button ion-button class="login-btn" round block style="margin-top: 40px;" (click)="goToCancel($event)" *ngIf="shouldShowCancel()">撤销申请
+    </button>
+</ion-content>

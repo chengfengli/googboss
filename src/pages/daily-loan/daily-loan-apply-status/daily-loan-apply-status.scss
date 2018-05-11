@@ -1,0 +1,20 @@
+page-daily-loan-apply-status {
+  .main {
+    text-align: center;
+    p {
+      text-align: center;
+    }
+    ion-icon {
+      color: map-get($colors, 'font-dark');
+      font-size: 20px;
+      &:before {
+        color: map-get($colors, 'primary');
+      }
+      &.successful {
+        &:before {
+          color: map-get($colors, 'light');
+        }
+      }
+    }
+  }
+}

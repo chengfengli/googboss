@@ -1,0 +1,82 @@
+page-fast-loan-apply-status {
+  .result-icon {
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 16px;
+    margin-bottom: 30px;
+    padding-left: 16px;
+    padding-right: 16px;
+    width: calc(100% + 32px);
+    margin-left: -16px;
+  }
+  .pass-statu {
+    ion-icon {
+      &:nth-child(1) {
+        &:before {
+          color: map-get($colors, 'light')
+        }
+      }
+      &:nth-child(2) {
+        &:before {
+          color: map-get($colors, 'primary')
+        }
+      }
+    }
+  }
+  .approval-statu {
+    .result-icon {
+      ion-icon {
+        &:before {
+          color: map-get($colors, 'primary');
+        }
+      }
+    }
+    .warning-text {
+      padding-left: 10px;
+      padding-right: 10px;
+      color: map-get($colors, 'font-light');
+      font-size: 12px;
+      margin: 30px 0;
+    }
+  }
+  .fail-statu {
+    .result-icon {
+      ion-icon {
+        &:before {
+          color: map-get($colors, 'primary');
+        }
+      }
+    }
+    ion-grid {
+      padding: 0;
+      ion-row {
+        color: map-get($colors, 'font-light');
+        margin-bottom: 27px;
+        font-size: 12px;
+        span {
+          font-size: 20px;
+          margin-right: 3px;
+          margin-top: -3px;
+        }
+        &:nth-child(1) {
+          font-size: 14px;
+          color: map-get($colors, 'font-normal');
+        }
+      }
+    }
+  }
+  .agree-provision {
+    margin-left: 10px;
+    margin-top: 20px;
+  }
+  .apply-cash {
+    text-align: right;
+    span {
+      margin-top: 15px;
+      display: block;
+      color: map-get($colors, 'font-light');
+    }
+  }
+  .apply-btn {
+    margin-top: 2.5rem;
+  }
+}

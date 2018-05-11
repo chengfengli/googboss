@@ -1,0 +1,128 @@
+enterprisename-form {
+  #logo-box {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+  }
+  #logo-txt {
+    width: 100%;
+    text-align: center;
+    color: #54CCAD;
+    font-size: 14px;
+    text-align: center;
+    color: #54CCAD;
+    font-size: 14px;
+    position: absolute;
+    padding-top: 25px;
+  }
+  #header {
+    height: 56px;
+    background: -webkit-linear-gradient(#72DDAA 0%, #54CCAD 100%);
+    background: -o-linear-gradient(#72DDAA 0%, #54CCAD 100%);
+    background: linear-gradient(#72DDAA 0%, #54CCAD 100%);
+    padding-top: 10px;
+  }
+  #ion-row {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    background: -webkit-linear-gradient(#72DDAA 0%, #5FD2AC 100%);
+    background: -o-linear-gradient(#72DDAA 0%, #5FD2AC 100%);
+    background: linear-gradient(#72DDAA 0%, #5FD2AC 100%);
+  }
+  #title {
+    text-align: center;
+  }
+  #tips {
+    text-align: center;
+    color: #BABABA;
+    font-size: 12px;
+  }
+  .list-ios {
+    margin: 70px 0 0 0;
+  }
+  #showMore {
+    color: #90DFCB;
+    border: 1px solid #90DFCB;
+    background: transparent;
+  }
+  #next {
+    border: 1px solid #fff;
+  }
+  .card-ios {
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.3);
+  }
+  ion-list.gb-form {
+    font-size: 16px;
+  }
+  .text-input-ios {
+    font-size: 14px;
+  }
+  ion-list.gb-form {
+    padding: 0 20px;
+  }
+  .imgs {
+    height: 100px;
+    text-align: center;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .imgs .button {
+    margin-top: 28%;
+    color: #999999;
+  }
+  .button-ios {
+    background: #90DFCB;
+    border-radius: 50px;
+    border-color: #fff;
+    color: #fff;
+    height: 54px;
+  }
+  .imgs img {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  ion-input {
+    background: #F6F6F6;
+    padding: 5px 0;
+    font-size: 16px;
+    border-radius: 4px;
+  }
+  .delete {
+    float: right;
+    margin: 3px;
+    color: #fff;
+    position: relative;
+    z-index: 5;
+  }
+  /*提交按钮*/
+  #showMore,
+  #next {
+    width: 99%;
+    border-radius: 50px;
+  }
+  .button-ios {
+    height: 40px;
+  }
+  .button-ios.activated {
+    background-color: transparent;
+  }
+  .add_pic {
+    position: relative;
+    padding-top: 20px;
+    color: #999999;
+    font-size: 12px;
+  }
+  .ion-md-add {
+    font-size: 26px;
+  }
+  .toolbar-background-ios {
+    background: #72DDAA !important;
+  }
+}

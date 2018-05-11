@@ -1,0 +1,64 @@
+enterprisename-preview {
+  .col {
+    padding: 0;
+  }
+  .toolbar-background-ios,
+  .toolbar-background-md,
+  .content-md,
+  .content-ios {
+    background-color: transparent;
+  }
+  #header {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+  }
+  #header div {
+    height: 64px;
+    width: 100%;
+    position: absolute;
+    background: #000000;
+    opacity: 0.1;
+  }
+  #footer {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    bottom: 0;
+    padding: 10px 0;
+  }
+  #footer div {
+    height: 80px;
+    position: absolute;
+    width: 100%;
+    background: #000000;
+    opacity: 0.1;
+  }
+  #next {
+    width: 86%;
+    height: 45px;
+    margin-top: 15px;
+  }
+  #title {
+    text-align: center;
+  }
+  .card-ios {
+    background: transparent;
+    box-shadow: 0 0 0 transparent;
+  }
+  iframe {
+    width: 90%;
+    border: 0;
+    margin: 10px 5%;
+  }
+  .button-ios {
+    background: transparent;
+    border-radius: 50px;
+    border-color: #fff;
+    color: #fff;
+    height: 54px;
+  }
+  .button-ios.activated {
+    background-color: transparent;
+  }
+}

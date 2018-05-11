@@ -1,0 +1,173 @@
+page-perfect-info {
+  .content-ios {
+    .header-text {
+      top: 6px;
+    }
+  }
+  .header {
+    .toolbar-background {
+      background: url(../assets/images/img/perfect_info.png) repeat-y;
+      background-size: 100% 5px;
+    }
+  }
+  .scroll-content {
+    padding-bottom: 110px;
+    height: 100% !important;
+  }
+  .content {
+    .prove-header {
+      position: relative;
+      margin-top: -0.2rem;
+      height: 12rem;
+      width: 100%;
+      background: url(../assets/images/img/perfect_info.png) repeat-y;
+      background-size: 100% 5px;
+      button {
+        background: rgba(0, 0, 0, 0);
+        position: absolute;
+        z-index: 10;
+        box-shadow: none;
+        .icon-ios {
+          margin-top: 16px;
+          padding: 0 8px;
+          font-size: 3.4rem;
+        }
+      }
+      .header-text {
+        width: 100%;
+        z-index: 1;
+        text-align: center;
+        font-size: 20px;
+        position: absolute;
+        color: #fff;
+        top: 25px;
+        p {
+          &:nth-child(1) {
+            font-size: 17px;
+          }
+          &:nth-child(2) {
+            font-size: 19px;
+            margin-top: 40px;
+          }
+        }
+      }
+    }
+    background-color: #efeff4;
+    .submit-btn {
+      margin-top: 50px;
+    }
+    .prove-card {
+      &:nth-child(3) {
+        ion-card-header {
+          ion-icon:first-child {
+            color: #8acda4;
+          }
+        }
+      }
+      &:nth-child(4) {
+        ion-card-header {
+          ion-icon:first-child {
+            color: #ebc44f;
+          }
+        }
+      }
+      margin: 0;
+      margin-bottom: 12px;
+      width: 100%;
+      box-shadow: none;
+      ion-card-header {
+        @include flex-box;
+        @include justify-content(space-between);
+        @include align-items();
+        padding-right: 4rem;
+        position: relative;
+        .prove-status {
+          color: #999999;
+          font-size: 12px;
+          position: absolute;
+          left: 72%;
+          top: 50%;
+          margin-top: -9px;
+        }
+        ion-icon {
+          &.prove-status {
+            &:before {
+              color: #86c89c;
+              font-size: 17px;
+              margin-right: 3px;
+            }
+          }
+          font-size: 15px;
+          span {
+            color: #033333;
+          }
+          &:before {
+            font-size: 35px;
+            vertical-align: middle;
+            margin-right: 8px;
+          }
+        }
+        @include responsive(sm) {
+          padding: 10px 48px 10px 16px;
+        }
+      }
+      ion-card-content {
+        border-top: 1px solid #efeff4;
+        padding: 0;
+        margin-left: 16px;
+        margin-right: 16px;
+        & > div {
+          padding-right: 0;
+          width: 90%;
+          margin-left: 10%;
+          font-size: 12px;
+          color: #999999;
+          @include responsive(sm) {
+            width: 100%;
+            margin-left: 0;
+          }
+          ion-row {
+            border-bottom: 1px solid #efeff4;
+            line-height: 30px;
+            ion-col {
+              padding-left: 0;
+              padding-right: 0;
+              &:nth-child(2) {
+                text-align: right;
+                span {
+                  font-family: allinpay;
+                  font-size: 20px;
+                  margin: 0 4px;
+                  padding-top: 10px;
+                  vertical-align: middle;
+                }
+              }
+              &:nth-child(1) {
+                @include flex-box;
+                span {
+                  overflow: hidden;
+                  white-space: nowrap;
+                  text-overflow: ellipsis;
+                }
+              }
+            }
+          }
+          ion-row:last-child {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+  }
+  .footer {
+    .apply-btn-box {
+      background-color: #efeff4;
+    }
+    .toolbar {
+      min-height: 66px;
+    }
+    .title {
+      padding: 0
+    }
+  }
+}

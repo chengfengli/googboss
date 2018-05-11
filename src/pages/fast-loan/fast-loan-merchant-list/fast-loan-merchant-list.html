@@ -1,0 +1,155 @@
+<!--
+  Generated template for the FastLoanMerchantList page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header #header>
+
+    <ion-navbar hideBackButton>
+        <ion-buttons start>
+            <button ion-button clear icon-only (click)="popRoot()">
+                <ion-icon name="arrow-dropleft"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>快快贷</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <div class="content-title">
+        <ion-slides zoom="false" spaceBetween="-40%" (ionSlideDidChange)="slideChanged()">
+            <ion-slide [@slideState]="toogleSlideState(fastLoanMchtDeposit)" *ngFor="let fastLoanMchtDeposit of fastLoanMchtDeposits;let i = index">
+                <ion-card>
+                    <ion-card-header>
+                        <h5 class="merchant-name-box">
+                            <ion-icon name="03" color="white" class="my-merchant-name">
+                                {{fastLoanMchtDeposit?.mchtName}}
+                            </ion-icon>
+                            <button ion-button icon-only clear color="white" class="merchant-detail" *ngIf="showMchtName(i)" (click)="goMchtDetail($event,fastLoanMchtDeposit.mchtName,fastLoanMchtDeposit.mchtCd)">
+                                <ion-icon name="information"></ion-icon>
+                            </button>
+                        </h5>
+                    </ion-card-header>
+
+                    <!--有欠债-->
+                    <ion-card-content class="have-debt-content" *ngIf="shouldShowDebtContent(fastLoanMchtDeposit)">
+                        <ion-row (click)="goToBillingDetails()" tappable>
+                            <span class="cash-font">{{fastLoanMchtDeposit?.deposit?.curNeedRepayedTotalAmt | currencyPipe}}</span>元
+                        </ion-row>
+                        <ion-row>
+                            <ion-icon name="21">当前应还金额</ion-icon>
+                        </ion-row>
+                        <ion-row>
+                            <p>当前最低还款金额：<span class="cash-font">{{fastLoanMchtDeposit?.deposit?.ctdLowRepaymentAmt | currencyPipe}}</span>
+                            </p>
+                            <p *ngIf="hasOverdue()">逾期状态: 有逾期</p>
+                            <p *ngIf="!hasOverdue()">逾期状态: 无逾期</p>
+                        </ion-row>
+                        <ion-row>
+                            当期还款日：{{fastLoanMchtDeposit?.deposit?.ctdRepaymentTime | stringToDate}}
+                        </ion-row>
+                        <button ion-button round outline class="submit-btn" color="white" (click)="gotoRepayment()">立即还款
+                        </button>
+                    </ion-card-content>
+                    <!--无欠债-->
+                    <ion-card-content class="no-debt-content" *ngIf="shouldShowNoDebtContent(fastLoanMchtDeposit)">
+                        <ion-row>您当前还款信誉很好！</ion-row>
+                        <ion-row>
+                            <p>
+                                <span class="cash-font">{{fastLoanMchtDeposit?.deposit?.ntdRepaymentAmt | currencyPipe}}</span>元
+                            </p>
+                        </ion-row>
+                        <ion-row>下期还款金额</ion-row>
+                        <ion-row>下期账单（还款日）：{{fastLoanMchtDeposit?.deposit?.ntdRepaymentDate | stringToDate}}</ion-row>
+                    </ion-card-content>
+                    <!--已结清-->
+                    <ion-card-content class="debt-payoff-content" *ngIf="shouldShowFinish(fastLoanMchtDeposit)">
+                        <ion-row>您好，本次贷款已结束！</ion-row>
+                        <ion-row>
+                            <button class="on-key-loan" ion-button round color="white" outline *ngIf="shouldShowOneKey()" (click)="oneKeyLoan($event, fastLoanMchtDeposit)">一键续贷
+                            </button>
+                            <button [class]="shouldShowOneKey()? 'loan-again disable-hover button button-ios button-round button-round-ios':'submit-btn disable-hover button button-ios button-outline button-outline-ios button-round button-round-ios button-outline-ios-white'" ion-button
+                                round color="white" (click)="loanAgain($event, fastLoanMchtDeposit)">
+                                再次贷款
+                            </button>
+                        </ion-row>
+                    </ion-card-content>
+                </ion-card>
+            </ion-slide>
+        </ion-slides>
+    </div>
+    <div class="content-main">
+        <ion-row class="check-date" *ngIf="!shouldShowFinish(currentFastLoanMchtDeposit)">
+            <ion-icon name="feedback">您的下期账单日为：{{currentFastLoanMchtDeposit?.deposit?.ntdRepaymentDate | stringToDate}}
+            </ion-icon>
+        </ion-row>
+        <div class="loan-msg">
+            <ion-item>
+                <ion-icon name="jinrongleiicontubiao-3" item-left color="light"></ion-icon>
+                <ion-row>我的贷款信息</ion-row>
+            </ion-item>
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-8>
+                        贷款金额(元)
+                    </ion-col>
+                    <ion-col col-4>
+                        {{currentFastLoanMchtDeposit?.deposit?.repaymentAmt | currencyPipe}}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col col-8>
+                        贷款总期数
+                    </ion-col>
+                    <ion-col col-4>
+                        {{currentFastLoanMchtDeposit?.deposit?.totalTerms}}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col col-8>
+                        剩余期数
+                    </ion-col>
+                    <ion-col col-4>
+                        {{currentFastLoanMchtDeposit?.deposit?.totalTerms - currentFastLoanMchtDeposit?.deposit?.currentTerm}}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col col-8>
+                        日管理费率
+                    </ion-col>
+                    <ion-col col-4>
+                        {{currentFastLoanMchtDeposit?.deposit?.manageFeeRate | dailyCurrencyRatesPipe}}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col col-8>
+                        起始日
+                    </ion-col>
+                    <ion-col col-4>
+                        {{currentFastLoanMchtDeposit?.deposit?.activeDate | stringToDate}}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col col-8>
+                        到期日
+                    </ion-col>
+                    <ion-col col-4>
+                        {{currentFastLoanMchtDeposit?.deposit?.endDate | stringToDate}}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col col-8>
+                        还款方式
+                    </ion-col>
+                    <ion-col col-4>
+                        {{currentFastLoanMchtDeposit?.deposit?.loanCycleType | fastLoanRepaymentTypePipe}}
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+    </div>
+</ion-content>
+<div class="shade" *ngIf="shouldShowShade"></div>

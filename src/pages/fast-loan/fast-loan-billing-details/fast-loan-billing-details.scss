@@ -1,0 +1,92 @@
+page-fast-loan-billing-details {
+  .gb-card {
+    ion-card-header {
+      padding: 15px 20px 10px 17px;
+      border-bottom: 1px solid #e5e5e5;
+      ion-row {
+        @include justify-content(space-between);
+        p {
+          font-size: 12px;
+          font-weight: normal;
+          &:nth-child(1) {
+            span {
+              margin-right: 18px;
+            }
+          }
+          &:nth-child(2) {
+            span {
+              font-size: 20px;
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+      color: map-get($colors, 'font-normal');
+    }
+    ion-card-content {
+      padding-right: 0;
+      ion-grid {
+        padding-right: 20px;
+        padding-left: 51px;
+        padding-top: 18px;
+        border-bottom: 1px solid #e5e5e5;
+        color: map-get($colors, 'font-normal');
+        & > ion-row {
+          @include justify-content(space-between);
+          ion-row {
+            width:100%;
+            @include justify-content(space-between);
+            font-size: 12px;
+            margin-bottom: 15px;
+            span {
+              i{
+                margin-left:5px;
+                font-style: normal;
+              }
+            }
+          }
+        }
+      }
+    }
+    .cash-font {
+      font-family: allinpay;
+    }
+    margin-bottom: 0;
+    &:nth-child(1) {
+      ion-card-header {
+        & > ion-row {
+          &:nth-child(1) {
+            p {
+              &:nth-child(1) {
+                font-size: 16px
+              }
+              &:nth-child(2) {
+                span {
+                  font-size: 35px;
+                }
+              }
+            }
+          }
+          &:nth-child(2) {
+            p {
+              &:nth-child(1) {
+                font-size: 13px
+              }
+              &:nth-child(2) {
+                span {
+                  font-size: 25px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .submit-btn {
+    margin-top: 120px;
+    @include responsive(sm) {
+      margin-top: 60px;
+    }
+  }
+}

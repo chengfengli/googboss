@@ -1,0 +1,80 @@
+<!--
+  Generated template for the ServicePraise page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header #header>
+
+    <ion-navbar>
+        <ion-title>服务评价</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <div class="content-title">
+        <ion-row>
+            您对这次服务的综合评价是
+        </ion-row>
+        <ion-row>
+            <ion-icon [name]="scoreAvg>1||scoreAvg===1?'wujiaoxingshixin':'wujiaoxing'" (click)="scoreAvg=1"></ion-icon>
+            <ion-icon [name]="scoreAvg>2||scoreAvg===2?'wujiaoxingshixin':'wujiaoxing'" (click)="scoreAvg=2"></ion-icon>
+            <ion-icon [name]="scoreAvg>3||scoreAvg===3?'wujiaoxingshixin':'wujiaoxing'" (click)="scoreAvg=3"></ion-icon>
+            <ion-icon [name]="scoreAvg>4||scoreAvg===4?'wujiaoxingshixin':'wujiaoxing'" (click)="scoreAvg=4"></ion-icon>
+            <ion-icon [name]="scoreAvg>5||scoreAvg===5?'wujiaoxingshixin':'wujiaoxing'" (click)="scoreAvg=5"></ion-icon>
+        </ion-row>
+    </div>
+    <div class="content-main">
+        <ion-row>
+            <span color="font-normal">处理速度</span>
+            <ion-icon [name]="scoreSpeed>1||scoreSpeed===1?'wujiaoxingshixin':'wujiaoxing'"
+                      (click)="scoreSpeed=1"></ion-icon>
+            <ion-icon [name]="scoreSpeed>2||scoreSpeed===2?'wujiaoxingshixin':'wujiaoxing'"
+                      (click)="scoreSpeed=2"></ion-icon>
+            <ion-icon [name]="scoreSpeed>3||scoreSpeed===3?'wujiaoxingshixin':'wujiaoxing'"
+                      (click)="scoreSpeed=3"></ion-icon>
+            <ion-icon [name]="scoreSpeed>4||scoreSpeed===4?'wujiaoxingshixin':'wujiaoxing'"
+                      (click)="scoreSpeed=4"></ion-icon>
+            <ion-icon [name]="scoreSpeed>5||scoreSpeed===5?'wujiaoxingshixin':'wujiaoxing'"
+                      (click)="scoreSpeed=5"></ion-icon>
+        </ion-row>
+        <ion-row>
+            <span color="font-normal">处理质量</span>
+            <ion-icon [name]="scoreQuality>1||scoreQuality===1?'wujiaoxingshixin':'wujiaoxing'"
+                      (click)="scoreQuality=1"></ion-icon>
+            <ion-icon [name]="scoreQuality>2||scoreQuality===2?'wujiaoxingshixin':'wujiaoxing'"
+                      (click)="scoreQuality=2"></ion-icon>
+            <ion-icon [name]="scoreQuality>3||scoreQuality===3?'wujiaoxingshixin':'wujiaoxing'"
+                      (click)="scoreQuality=3"></ion-icon>
+            <ion-icon [name]="scoreQuality>4||scoreQuality===4?'wujiaoxingshixin':'wujiaoxing'"
+                      (click)="scoreQuality=4"></ion-icon>
+            <ion-icon [name]="scoreQuality>5||scoreQuality===5?'wujiaoxingshixin':'wujiaoxing'"
+                      (click)="scoreQuality=5"></ion-icon>
+        </ion-row>
+        <ion-row>
+            <span color="font-normal">服务态度</span>
+            <ion-icon [name]="scoreAttitude>1||scoreAttitude===1?'wujiaoxingshixin':'wujiaoxing'"
+                      (click)="scoreAttitude=1"></ion-icon>
+            <ion-icon [name]="scoreAttitude>2||scoreAttitude===2?'wujiaoxingshixin':'wujiaoxing'"
+                      (click)="scoreAttitude=2"></ion-icon>
+            <ion-icon [name]="scoreAttitude>3||scoreAttitude===3?'wujiaoxingshixin':'wujiaoxing'"
+                      (click)="scoreAttitude=3"></ion-icon>
+            <ion-icon [name]="scoreAttitude>4||scoreAttitude===4?'wujiaoxingshixin':'wujiaoxing'"
+                      (click)="scoreAttitude=4"></ion-icon>
+            <ion-icon [name]="scoreAttitude>5||scoreAttitude===5?'wujiaoxingshixin':'wujiaoxing'"
+                      (click)="scoreAttitude=5"></ion-icon>
+        </ion-row>
+
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-title>
+            <div class="apply-btn-box">
+                <button color="primary" full round ion-button class="submit-btn" (click)="goToPraise()">发表评价</button>
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-footer>

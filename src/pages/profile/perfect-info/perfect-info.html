@@ -1,0 +1,70 @@
+<!--<!--
+  Generated template for the FastLoanPerfectInfo page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header style="border: 0 solid fff">
+    <ion-navbar>
+        <ion-title>{{shouldShowNotFull()?"个人资料":"完善资料"}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content no-bounce>
+    <div class="prove-header" [hidden]="!hasLoaded">
+        <div class="header-text">
+            <p>{{shouldShowNotFull()?"您的资料已完善，可以开始申请贷款":"请您补充信息，完善您的资料"}}</p>
+        </div>
+    </div>
+    <ion-card class="prove-card" (click)="verifyId()">
+        <ion-card-header>
+            <ion-icon name="profile" color="primary"><span>实名认证</span></ion-icon>
+            <p class="prove-status" *ngIf="!profile.hasVerification">{{verificationStatus}}</p>
+            <ion-icon class="prove-status" name="renzheng" *ngIf="profile.hasVerification">{{verificationStatus}}
+            </ion-icon>
+        </ion-card-header>
+    </ion-card>
+    <ion-card class="prove-card" (click)="goToMerchantInfo()">
+        <ion-card-header>
+            <ion-icon name="shengrongdanbao"><span>商户信息</span></ion-icon>
+            <p class="prove-status" *ngIf="this.profile.merchantInfos.length === 0">{{bindMerchantStatus}}</p>
+            <ion-icon class="prove-status" name="renzheng" *ngIf="this.profile.merchantInfos.length > 0">
+                {{bindMerchantStatus}}
+            </ion-icon>
+        </ion-card-header>
+        <ion-card-content *ngIf="isFastLoan()">
+            <div>
+                <ion-row *ngFor="let merchant of profile.merchantInfos">
+                    <ion-col col-5><span>{{merchant.mchtName}}</span>
+                        <button ion-button icon-only clear color="primary" class="merchant-detail"
+                                (click)="goMchtDetail($event,merchant.mchtName,merchant.mchtCd)">
+                            <ion-icon name="information"></ion-icon>
+                        </button>
+                    </ion-col>
+                    <ion-col col-7>最高可贷款<span color="primary">{{merchant?.preApproval | currencyPipe}}</span>元</ion-col>
+                </ion-row>
+            </div>
+        </ion-card-content>
+    </ion-card>
+    <ion-card class="prove-card" [hidden]="isDailyLoan()" (click)="goToUploadCredit()">
+        <ion-card-header>
+            <ion-icon name="account1"><span>征信报告</span></ion-icon>
+            <p class="prove-status" *ngIf="!this.profile.hasCreditReport">{{creditReportStatus}}</p>
+            <ion-icon class="prove-status" name="renzheng" *ngIf="this.profile.hasCreditReport">{{creditReportStatus}}
+            </ion-icon>
+        </ion-card-header>
+    </ion-card>
+</ion-content>
+<ion-footer *ngIf="shouldShowApplyButton()">
+    <ion-toolbar>
+        <ion-title>
+            <div class="apply-btn-box">
+                <button color="primary" round class="apply-btn" ion-button block (click)="goChooseMerchant()"
+                        [disabled]="!isValidProfile()">{{loanTypeIsBusiness()?'立即使用':'开始申请'}}
+                </button>
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-footer>
+<div class="shade" *ngIf="shouldShowShade"></div>

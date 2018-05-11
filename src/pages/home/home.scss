@@ -1,0 +1,338 @@
+page-home {
+  .banner {
+    width: 100%;
+    height: 14.2rem;
+    position: relative;
+    .bg-img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .banner-text {
+      position: absolute;
+      z-index: 1;
+      right: 1.4rem;
+      top: 50%;
+      margin-top: -3rem;
+      p {
+        margin: 0;
+        &:nth-child(1) {
+          font-size: 19px;
+        }
+        &:nth-child(2) {
+          font-size: 12px;
+        }
+        &:nth-child(3) {
+          font-size: 10px;
+          margin-top: 3px;
+          background-color: map-get($colors, "primary");
+          @include flex-box;
+          text-align: center;
+          padding: 1px 3px;
+          span {
+            @include flex(1);
+          }
+        }
+      }
+    }
+  }
+  .board {
+    ul {
+      margin: 0;
+      background-color: #fff;
+      height: 45px;
+      overflow: hidden;
+      padding: 0 12px;
+      position: relative;
+      li {
+        width: 100%;
+        list-style: none;
+        padding: 14px 0;
+        position: absolute;
+        top:0;
+        ion-icon {
+          color: #ef7840;
+          font-size: 12px;
+          &:before {
+            font-size: 14px;
+            margin-right: 8px;
+          }
+        }
+      }
+    }
+  }
+  .content {
+    .box-header {
+      margin-top: 10px;
+      margin-bottom: -0.5rem;
+      @include flex-box;
+      @include justify-content(space-between);
+      @include align-items();
+      padding: 0 12px;
+      ion-icon {
+        margin-top: 0.7rem;
+        font-size: 1.5rem;
+        color: #333333 !important;
+        &:before {
+          font-size: 2.2rem;
+          color: #f45e3b;
+          margin-right: 7px;
+          vertical-align: top;
+        }
+      }
+      .button {
+        font-size: 1rem;
+        height: 2.2rem;
+        padding: 0 6px;
+      }
+    }
+    background-color: #f0eff5;
+    ion-card {
+      box-shadow: none;
+      position: relative;
+      .bg-img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+      }
+      .card-main {
+        position: relative;
+        height: 100%;
+        z-index: 1;
+        width: calc(100% - 25px);
+        padding: 0 14px 0 11px;
+        @include responsive(sm) {
+          width: 100%;
+          padding-right: 0;
+          padding-left: 0;
+        }
+      }
+    }
+    .forAllinpay {
+      ion-row {
+        flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
+        -webkit-flex-wrap: nowrap;
+      }
+      ion-card-header {
+        border-bottom: 1px solid #e4e4e4;
+        padding: 10px 0 8px;
+        @include responsive(sm) {
+          padding-left: 10px;
+        }
+        height: 52px;
+        & > ion-icon {
+          font-size: 15px;
+          color: #333333;
+          &:before {
+            font-size: 30px;
+            vertical-align: middle;
+            margin-right: 8px;
+          }
+        }
+      }
+      .no-dredge-card {
+        ion-card-content {
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 5px;
+          ion-grid {
+            padding: 0;
+            color: #666666;
+            .row-left {
+              & > ion-row:nth-child(1) {
+                flex-wrap: nowrap;
+                font-size: 10px;
+                margin-top: -4px;
+                @include flex-box;
+                span:nth-child(1) {
+                  font-size: 24px;
+                  font-family: "allinpay";
+                }
+                span:nth-child(2) {
+                  padding-top: 9px;
+                  margin-left: 2px;
+                }
+              }
+              & > ion-row:nth-child(2) {
+                font-size: 13px;
+                padding-left: 11px;
+                margin-top: -4px;
+              }
+            }
+            .row-right {
+              & > ion-row:nth-child(1) {
+                color: #333333;
+                font-size: 13px;
+              }
+              & > ion-row:nth-child(2) {
+                font-size: 13px;
+                margin-top: 4px;
+                ion-col {
+                  padding: 0;
+                }
+                ion-icon {
+                  font-size: 13px;
+                  &:before {
+                    color: #f45e3b;
+                    margin-right: 5px;
+                  }
+                }
+              }
+            }
+          }
+        }
+        &.kkd-card {
+          ion-icon {
+            &:before {
+              color: #03bead;
+            }
+          }
+        }
+        &.ttr-card {
+          ion-icon {
+            &:before {
+              color: #e89d4c;
+            }
+          }
+        }
+      }
+      .have-dredge-card {
+        ion-card-header {
+          @include flex-box;
+          @include justify-content(space-between);
+          @include align-items();
+          & > ion-icon {
+            margin-left: 11px;
+          }
+          button {
+            margin-right: 9px;
+            font-size: 13px;
+            color: map-get($colors, 'font-normal');
+            ion-icon {
+              font-size: 14px;
+              margin-left: 4px;
+              color: map-get($colors, 'primary');
+            }
+          }
+        }
+        ion-card-content {
+          padding-right: 0;
+          padding-left: 19px;
+          padding-bottom: 0;
+          ion-grid {
+            padding: 0;
+            ion-row {
+              padding: 17px 18px 17px 0;
+              @include justify-content(space-between);
+              border-bottom: 1px dashed #d2d2d2;
+              & > p {
+                margin-bottom: 0;
+                line-height: 100%;
+                &:nth-child(1) {
+                  font-size: 14px;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  @include flex(1);
+                  margin-right: 30px;
+                }
+                &:nth-child(2) {
+                  font-size: 12px
+                }
+              }
+              & > div {
+                p {
+                  font-size: 12px;
+                  line-height: 12px;
+                  &.next-pay-date {
+                    margin-top: 8px;
+                    text-align: right;
+                  }
+                }
+              }
+              .repayment-row {
+                margin-top: -8px;
+                p {
+                  font-size: 12px;
+                  &:nth-child(2) {
+                    text-align: right;
+                    span {
+                      color: map-get($colors, 'font-light');
+                      margin-left: 10px;
+                    }
+                  }
+                }
+              }
+              .cash-font {
+                color: map-get($colors, 'primary');
+                font-size: 22px;
+                vertical-align: middle;
+                margin: 0 4px;
+              }
+              &:last-child {
+                border: none;
+              }
+              .text-btn {
+                font-size: 12px;
+              }
+            }
+          }
+        }
+        &.kkd-card {
+          ion-card-header {
+            & > ion-icon {
+              &:before {
+                color: #03bead;
+              }
+            }
+          }
+        }
+        &.ttr-card {
+          ion-card-header {
+            & > ion-icon {
+              &:before {
+                color: #e89d4c;
+              }
+            }
+          }
+        }
+      }
+    }
+    .more {
+      .box-header {
+        margin-top: 0;
+        margin-bottom: 1.3rem;
+      }
+      ion-card {
+        .bg-img {
+          object-fit: cover;
+        }
+        ion-card-header {
+          font-size: 1.5rem;
+          padding-top: 24px;
+          padding-left: 22px;
+          padding-bottom: 5px;
+          ion-icon {
+            &:before {
+              color: #5b5b5b;
+            }
+          }
+        }
+        ion-card-content {
+          padding-left: 22px;
+          font-size: 13px;
+          ion-row {
+            &:nth-child(1) {
+              font-size: 16px;
+            }
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+  }
+}

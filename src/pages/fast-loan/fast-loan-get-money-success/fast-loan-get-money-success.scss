@@ -1,0 +1,25 @@
+page-get-money-success {
+  .result-icon {
+    ion-icon {
+      &:before {
+        color: map-get($colors, 'light');
+      }
+    }
+  }
+  .card-content {
+    @include responsive(sm) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    p {
+      text-align: center;
+      &:nth-child(1) {
+        font-size: 13px;
+        margin-bottom: 8px;
+      }
+      &:nth-child(2) {
+        font-size: 12px
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+page-fast-loan-married-fill-information {
+  .gb-card {
+    border-bottom: 1px solid #dcdcdc;
+    ion-card-header {
+      @include responsive(sm) {
+        padding-top: 8px;
+        padding-bottom: 8px;
+      }
+    }
+    ion-icon {
+      font-size: 16px;
+      color: map-get($colors, 'font-normal');
+      &:before {
+        font-size: 40px;
+        color: map-get($colors, 'light');
+      }
+    }
+  }
+  .gb-form {
+    padding: 18px 25px 0;
+    @include responsive(sm) {
+      padding: 5px 16px 0;
+      margin-bottom: 16px;
+    }
+    & > p {
+      font-size: 13px;
+      margin-top: 0;
+    }
+  }
+}

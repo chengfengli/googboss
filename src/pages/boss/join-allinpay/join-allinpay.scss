@@ -1,0 +1,15 @@
+page-join-allinpay {
+  .gb-form {
+    ion-item:last-child {
+      .item-inner {
+        height: 8rem;
+        .input-wrapper {
+          height: 100%;
+          textarea {
+            height: calc(100% - 22px);
+          }
+        }
+      }
+    }
+  }
+}

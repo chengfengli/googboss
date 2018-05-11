@@ -1,0 +1,50 @@
+<!--
+  Generated template for the FastLoanMarriedFillInformation page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header #header>
+
+    <ion-navbar>
+        <ion-title>补充信息</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-card class="gb-card">
+        <ion-card-header>
+            <ion-icon name="wanshanxinxi">请完善以下信息并完成签约</ion-icon>
+        </ion-card-header>
+    </ion-card>
+    <ion-list class="gb-form" [formGroup]="myForm">
+        <ion-item>
+            <ion-input placeholder="请输入直系亲属姓名" formControlName="kinsfolkName" maxlength="30"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input placeholder="请输入直系亲属手机号码" formControlName="kinsfolkPhoneNum" type="tel"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label class="select-label">请选择直系亲属关系</ion-label>
+            <ion-select okText="确定" cancelText="取消" formControlName="kinsfolkRelationship" placeholder="亲属关系">
+                <ion-option *ngFor="let relationType of relationTypes" [value]="relationType.id">{{relationType.name}}
+                </ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-input placeholder="请输入贷款人家庭住址" formControlName="borrowerAddress"></ion-input>
+        </ion-item>
+    </ion-list>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-title>
+            <div class="apply-btn-box">
+                <button color="primary" full round ion-button class="submit-btn" (click)="goToSign()">确认签约</button>
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-footer>
+<div class="shade" *ngIf="shouldShowShade"></div>

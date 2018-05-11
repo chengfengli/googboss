@@ -1,0 +1,28 @@
+page-fast-loan-intro {
+  .banner {
+    img {
+      width: 100%;
+    }
+  }
+  .footer {
+    .toolbar {
+      border-top:0.55px solid #dcdcdc;
+      min-height: 66px;
+    }
+    .title {
+      padding: 0
+    }
+  }
+  .pro-repayment {
+    .label {
+      & > span {
+        font-size: 13px;
+        color: map-get($colors, 'font-dark');
+        margin-right: 20px;
+      }
+      & > ion-icon {
+        margin-right: 18px;
+      }
+    }
+  }
+}

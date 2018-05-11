@@ -1,0 +1,117 @@
+<!--
+  Generated template for the FastLoanIntro page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header #header>
+
+    <ion-navbar>
+        <ion-title>快快贷</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <div class="banner">
+        <img [src]="banner | imgPipe" />
+    </div>
+    <ion-list class="intro-list">
+        <ion-list-header>
+            <ion-icon name="form">产品介绍</ion-icon>
+        </ion-list-header>
+        <ion-item class="pro pro-intro">
+            <p>
+                无抵押、无担保的小额线上纯信用贷款，以商户自身的POS交易流水及商户信用记录作为贷款审批的主要依据，客户在好老板APP上即可完成从授信申请到审批放款的全流程操作。放款快，费率低，流水抵扣自动还款，一键解决商户融资难题！</p>
+        </ion-item>
+        <ion-list-header>
+            <ion-icon name="integral">产品优势</ion-icon>
+        </ion-list-header>
+        <ion-item class="pro pro-adv">
+            <ion-row>
+                <ion-col col-6>
+                    <div>
+                        <ion-icon name='operation'></ion-icon>
+                    </div>
+                    <div>
+                        <p>零门槛</p>
+                        <p>无抵押、无担保</p>
+                    </div>
+                </ion-col>
+                <ion-col col-6>
+                    <div>
+                        <ion-icon name='trade'></ion-icon>
+                    </div>
+                    <div>
+                        <p>额度高</p>
+                        <p>最高可达100万</p>
+                    </div>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col col-6>
+                    <div>
+                        <ion-icon name='16'></ion-icon>
+                    </div>
+                    <div>
+                        <p>费率低</p>
+                        <p>无手续费、无服务费，日账款管理费最低仅万分之1.7</p>
+                    </div>
+                </ion-col>
+                <ion-col col-6>
+                    <div>
+                        <ion-icon name='history'></ion-icon>
+                    </div>
+                    <div>
+                        <p>放款快</p>
+                        <p>最快5分钟放款</p>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+        <ion-list-header>
+            <ion-icon name="manage-order">还款方式</ion-icon>
+        </ion-list-header>
+        <ion-item class="pro pro-repayment">
+            <span>零门槛</span>
+            <ion-icon name="wancheng">流水抵扣</ion-icon>
+            <ion-icon name="wancheng">自动代扣</ion-icon>
+            <ion-icon name="wancheng">主动还款</ion-icon>
+        </ion-item>
+        <ion-list-header>
+            <ion-icon name="survey">常见问题</ion-icon>
+        </ion-list-header>
+        <ion-item class="pro question-item">
+            <div class="question">
+                <ion-row>
+                    <img src="assets/images/img/intro_question.png">
+                    <p>好老板POS贷对申请人有怎样的要求？</p>
+                </ion-row>
+                <ion-row>
+                    <img src="assets/images/img/intro_answer.png">
+                    <p>通联POS商户是唯一准入门槛。入网时间满3个月且拥有连续3个月的POS交易流水。</p>
+                </ion-row>
+            </div>
+            <div class="question">
+                <ion-row>
+                    <img src="assets/images/img/intro_question.png">
+                    <p>好老板POS贷对贷款资金用途有限制吗？</p>
+                </ion-row>
+                <ion-row>
+                    <img src="assets/images/img/intro_answer.png">
+                    <p>贷款资金应用于企业正常经营活动，不得用于投资股票、债券、理财产品、期货、股本权益等投资，或变相用于房地产项目开发以及其他权益性投资或者国家有关法律、法规和规章明令禁止的其他行为。</p>
+                </ion-row>
+            </div>
+        </ion-item>
+    </ion-list>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-title>
+            <div class="apply-btn-box" *ngIf="btnActive">
+                <button color="primary" round class="apply-btn" ion-button block (click)="goProfile()">立刻申请</button>
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-footer>

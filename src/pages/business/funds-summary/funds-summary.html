@@ -1,0 +1,47 @@
+<!--
+  Generated template for the POSTransactionsMonthly page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header #header>
+
+    <ion-navbar>
+        <ion-title>资金汇总</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-card class="gb-card transaction-title">
+        <ion-row>统计时间<span>{{mchtInfo?.statisticsDate | stringToDate}}</span></ion-row>
+        <ion-row>近30天资金汇总金额<span color="primary">{{mchtInfo?.transFlowTotal | currencyPipe}}元</span></ion-row>
+    </ion-card>
+    <ion-card class="gb-card transaction-content">
+        <ion-card-header>
+            <ion-row>资金汇总列表</ion-row>
+        </ion-card-header>
+        <ion-card-content>
+            <div class="content-bg">
+                <img [src]="headerImg | imgPipe">
+            </div>
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-6>交易时间</ion-col>
+                    <ion-col col-6>单日资金汇总金额</ion-col>
+                </ion-row>
+                <ion-row *ngFor="let item of summaryList" (click)="goSummaryDetail(item.txnDate)" tappable>
+                    <ion-col col-6>{{item?.txnDate | stringToDate}}</ion-col>
+                    <ion-col col-6>{{item?.txnAmt | currencyPipe}}</ion-col>
+                </ion-row>
+            </ion-grid>
+            <div class="content-bg">
+                <img [src]="footerImg | imgPipe">
+            </div>
+            <ion-row class="warning-text">
+                温馨提示：点击可查看单日交易明细
+            </ion-row>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

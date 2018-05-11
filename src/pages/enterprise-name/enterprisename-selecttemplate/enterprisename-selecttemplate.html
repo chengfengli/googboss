@@ -1,0 +1,22 @@
+<ion-content [ngStyle]="{'background-image':'url('+background+')','background-size':'100% 100%'}">
+    <ion-row>
+        <ion-col>
+            <button ion-button icon-only (click)="goBack()">
+                <ion-icon name="arrow-dropleft"></ion-icon>
+            </button>
+        </ion-col>
+        <ion-col id="title">
+            <button ion-button icon-only>
+                选择模板
+            </button>
+        </ion-col>
+        <ion-col>
+        </ion-col>
+    </ion-row>
+    <ion-slides pager (ionSlideDidChange)="slideChange()">
+        <ion-slide *ngFor="let item of items"
+                   [ngStyle]="{'background':'url('+imageURL+item.templateBgimg+')','background-size':'100% 100%'}">
+        </ion-slide>
+    </ion-slides>
+    <button id="next" outline ion-button (click)="goEditNameCardPage()">使用此模板</button>
+</ion-content>

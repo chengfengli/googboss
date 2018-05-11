@@ -1,0 +1,59 @@
+<!--
+  Generated template for the MyFastLoanList page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header #header>
+
+    <ion-navbar>
+        <ion-title>我的天天融</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <div class="no-data-shade" *ngIf="shouldShowNoData">
+        <img [src]="noDataImg | imgPipe" />
+        <p>暂无记录</p>
+        <p color="font-light" style="font-size:10px;">更多内容由你开启~</p>
+        <button ion-button round outline (click)="reloadData()">点击刷新</button>
+    </div>
+    <div class="net-error-shade" *ngIf="shouldShowNetError">
+        <img [src]="netErrorImg | imgPipe" />
+        <p>网络错误，请稍后再试...</p>
+        <button ion-button round outline (click)="reloadData()">点击刷新</button>
+    </div>
+    <div *ngIf="!shouldShowNetError">
+        <div class="warning-text">注：本页面仅显示已签约的天天融信息。</div>
+        <ion-card *ngFor="let dailyLoanApplyRecord of dailyLoanApplyRecords">
+            <ion-card-header>
+                <ion-row>签约时间<span>{{dailyLoanApplyRecord?.signTime | stringToDate}}</span></ion-row>
+            </ion-card-header>
+            <ion-card-content>
+                <ion-row>
+                    <p>开通日期<span>{{dailyLoanApplyRecord?.startTime | stringToDate}}</span></p>
+                    <p>结束日期<span>{{dailyLoanApplyRecord?.endTime | stringToDate}}</span></p>
+                </ion-row>
+                <ion-row>
+                    <p>商户名<span>{{dailyLoanApplyRecord?.mchtName}}</span>
+                        <button ion-button icon-only clear color="primary" class="merchant-detail" (click)="goMchtDetail($event,dailyLoanApplyRecord.mchtName,dailyLoanApplyRecord.mchtCd)">
+                            <ion-icon name="information"></ion-icon>
+                        </button>
+                    </p>
+                </ion-row>
+                <ion-row>
+                    <p>商户号<span>{{dailyLoanApplyRecord?.mchtCd}}</span></p>
+                </ion-row>
+            </ion-card-content>
+        </ion-card>
+    </div>
+    <ion-infinite-scroll [hidden]="!hasMoreData" (ionInfinite)="loadMore($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>
+<div class="shade" *ngIf="shouldShowShade"></div>

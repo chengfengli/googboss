@@ -1,0 +1,55 @@
+<!--
+  Generated template for the BusinessIntro page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header #header>
+
+    <ion-navbar>
+        <ion-title>生e经</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-card class="gb-card">
+        <ion-row>
+            <ion-row>
+                <ion-icon name="jinrongleiicontubiao-9">经营状况</ion-icon>
+            </ion-row>
+            <ion-row>对近期12个月以内的所有交易流水及资金状况进行分析并给出同类企业交易流水情况及排名</ion-row>
+        </ion-row>
+        <img [src]="introImg1 | imgPipe"/>
+    </ion-card>
+    <ion-card class="gb-card">
+        <ion-row>
+            <ion-row>
+                <ion-icon name="jinrongleiicontubiao-7">交易明细</ion-icon>
+            </ion-row>
+            <ion-row>实时查看近30天的交易流水明细</ion-row>
+        </ion-row>
+        <img [src]="introImg2 | imgPipe"/>
+    </ion-card>
+    <ion-card class="gb-card">
+        <ion-row>
+            <ion-row>
+                <span color="font-dark">资金明细</span>
+                <ion-icon name="jinrongleiicontubiao-10"></ion-icon>
+            </ion-row>
+            <ion-row>实时查看贷款及还款明细</ion-row>
+        </ion-row>
+        <img [src]="introImg3 | imgPipe"/>
+    </ion-card>
+    <ion-card class="gb-card">
+        <ion-row>
+            <ion-row>
+                <ion-icon name="jinrongleiicontubiao-8">经营分析</ion-icon>
+            </ion-row>
+            <ion-row>商户消费金额、消费时段的不同维度进行分析经营状况，便于商户了解自己的详细经营特点</ion-row>
+        </ion-row>
+        <img [src]="introImg4 | imgPipe"/>
+    </ion-card>
+    <button class="submit-btn" color="primary" ion-button round block (click)="goProfile()">开始使用</button>
+</ion-content>

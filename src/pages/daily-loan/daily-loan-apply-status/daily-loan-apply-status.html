@@ -1,0 +1,47 @@
+<!--
+  Generated template for the TtrApplyStatus page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header #header>
+
+    <ion-navbar hideBackButton>
+        <ion-title>申请结果</ion-title>
+        <ion-buttons end *ngIf="applyStatus !== 'S'">
+            <button ion-button clear (click)="popRoot()">完成</button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <div class="main searching-shade" *ngIf="applyStatus === 'NOT_LOAD' || applyStatus === 'N'">
+        <img [src]="searchImg | imgPipe"/>
+        <p color="font-normal">正在查询中,请稍后...</p>
+    </div>
+    <div class="main" *ngIf="applyStatus === 'H' || applyStatus === 'A'">
+        <ion-icon name="smile">您的申请正在审核中</ion-icon>
+        <p color="font-normal">请耐心等候并关注审批结果，审核通过后，请及时登录签约以使用天天融业务进行提现！</p>
+    </div>
+
+    <div class="main" *ngIf="applyStatus === 'S'">
+        <ion-icon name="wancheng" class="successful">恭喜您，您的天天融业务申请成功！</ion-icon>
+        <p color="font-normal">3秒后自动跳转到天天融</p>
+    </div>
+
+    <div class="main" *ngIf="applyStatus === 'F'">
+        <ion-icon name="cry" class="unsuccessful">很抱歉，您暂时不满足天天融业务要求！</ion-icon>
+        <p color="font-normal">您可以在今后满足要求时，重新申请！</p>
+    </div>
+
+    <div class="main" *ngIf="applyStatus === 'U'">
+        <ion-icon name="cry" class="unsuccessful">很抱歉，签约未完成！</ion-icon>
+        <p color="font-normal">请联系客户经理处理！</p>
+    </div>
+
+    <div class="main signing-contract" *ngIf="applyStatus === 'C'">
+        <img [src]="signingImg | imgPipe"/>
+        <p color="font-normal">正在签约中...</p>
+    </div>
+</ion-content>

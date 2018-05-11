@@ -1,0 +1,76 @@
+page-daily-loan-settings {
+  .content {
+    background-color: #efeff4;
+    ion-card {
+      ion-card-header {
+        padding: 0;
+        @include responsive(sm) {
+          font-size: 12px;
+        }
+        .apply-statu {
+          font-size: 12px;
+          margin-right: -2px;
+        }
+      }
+      &:nth-child(1) {
+        .item {
+          border-bottom: 1px solid #dcdcdc;
+        }
+      }
+      ion-card-content {
+        padding: 0;
+        .item {
+          padding-left: 4rem;
+          padding-top: 3px;
+          padding-bottom: 3px;
+          &:nth-child(1) {
+            .label {
+              white-space: normal;
+              p {
+                font-size: 12px;
+              }
+            }
+          }
+          &:nth-child(2) {
+            border-bottom: none;
+            ion-grid {
+              padding: 0;
+              color: map-get($colors, 'font-light');
+              font-size: 12px;
+              ion-row {
+                margin-bottom: 10px;
+                ion-col {
+                  padding: 0;
+                  &:nth-child(3) {
+                    color: map-get($colors, 'primary');
+                  }
+                }
+                &:last-child {
+                  margin-bottom: 0;
+                }
+                &:first-child {
+                  color: map-get($colors, 'primary');
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .item {
+    padding-left: 15px;
+    ion-icon {
+      font-size: 20px;
+      min-height: 27px;
+      margin-right: 8px !important;
+    }
+    .item-inner {
+      border: none !important;
+      .button {
+        padding: 15px 16px;
+        font-size: 11px;
+      }
+    }
+  }
+}

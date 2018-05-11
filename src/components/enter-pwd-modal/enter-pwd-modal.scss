@@ -1,0 +1,179 @@
+page-enter-pwd-modal {
+  ion-header {
+    display: none;
+  }
+  .content {
+    background-color: rgba(0, 0, 0, 0);
+    ion-card {
+      height: 65%;
+      position: absolute;
+      bottom: 0;
+      margin-bottom: 0;
+      ion-card-header {
+        border-bottom: 1px solid #dcdcdc;
+        position: relative;
+        p {
+          text-align: center;
+          font-size: 15px;
+          font-weight: normal;
+        }
+        .button {
+          position: absolute;
+          right: 0;
+          top: 4px;
+          font-size: 14px;
+        }
+      }
+    }
+    ion-card-content {
+      height: 100%;
+      .pwd-box {
+        & > p:nth-child(1) {
+          height: 3.5rem;
+          line-height: 3.5rem;
+          font-size: 12px;
+          text-align: center;
+        }
+        .forget-pwd {
+          @include flex-box;
+          @include justify-content(flex-end);
+          padding-right: 9px;
+          font-size: 11px;
+          line-height: 21px;
+        }
+        .submit-btn {
+          margin-top: 1.3rem;
+        }
+      }
+      .success-box {
+        width: 100%;
+        height: 100%;
+        @include flex-box;
+        @include align-items();
+        @include flex-direction();
+        ion-icon {
+          font-size: 55px;
+          margin-bottom: 12px;
+          margin-top: 20%;
+        }
+      }
+      .loading-box {
+        @include flex-box;
+        @include align-items();
+        @include flex-direction();
+        .warm-text {
+          font-size: 13px;
+          margin-top: 30%;
+        }
+        .loading {
+          margin-top: 20%;
+          width: 58px;
+          height: 58px;
+          position: relative;
+          margin-bottom: 12px;
+          @include keyframes(loading) {
+            0% {
+              opacity: 0.2;
+            }
+            50% {
+              opacity: 1;
+            }
+            100% {
+              opacity: 0.2;
+            }
+          }
+          p {
+            width: 7px;
+            height: 7px;
+            position: absolute;
+            border-radius: 100%;
+            background-color: #41c895;
+            animation-name: loading;
+            animation-duration: 0.8s;
+            animation-iteration-count: infinite;
+            &:nth-child(1) {
+              left: 0;
+              top: 25px;
+              animation-delay: 0.55s;
+            }
+            &:nth-child(2) {
+              left: 2px;
+              top: 15px;
+              animation-delay: 0.6s;
+            }
+            &:nth-child(3) {
+              left: 7px;
+              top: 7px;
+              animation-delay: 0.65s;
+            }
+            &:nth-child(4) {
+              left: 16px;
+              top: 2px;
+              animation-delay: 0.7s;
+            }
+            &:nth-child(5) {
+              left: 25px;
+              top: 0;
+              animation-delay: 0.75s;
+            }
+            &:nth-child(6) {
+              left: 36px;
+              top: 2px;
+              animation-delay: 0.8s;
+            }
+            &:nth-child(7) {
+              left: 44px;
+              top: 7px;
+              animation-delay: 0.05s;
+            }
+            &:nth-child(8) {
+              left: 49px;
+              top: 15px;
+              animation-delay: 0.1s;
+            }
+            &:nth-child(9) {
+              left: 51px;
+              top: 25px;
+              animation-delay: 0.15s;
+            }
+            &:nth-child(10) {
+              left: 49px;
+              top: 36px;
+              animation-delay: 0.2s;
+            }
+            &:nth-child(11) {
+              left: 44px;
+              top: 44px;
+              animation-delay: 0.25s;
+            }
+            &:nth-child(12) {
+              left: 36px;
+              top: 49px;
+              animation-delay: 0.3s;
+            }
+            &:nth-child(13) {
+              left: 25px;
+              top: 51px;
+              animation-delay: 0.35s;
+            }
+            &:nth-child(14) {
+              left: 15px;
+              top: 49px;
+              animation-delay: 0.4s;
+            }
+            &:nth-child(15) {
+              left: 7px;
+              top: 44px;
+              animation-delay: 0.45s;
+            }
+            &:nth-child(16) {
+              left: 2px;
+              top: 36px;
+              animation-delay: 0.5s;
+            }
+          }
+        }
+      }
+    }
+  }
+}

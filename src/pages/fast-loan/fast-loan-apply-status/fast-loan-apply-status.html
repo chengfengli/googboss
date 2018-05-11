@@ -1,0 +1,157 @@
+<!--
+  Generated template for the FastLoanApplyStatus page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header #header>
+
+    <ion-navbar hideBackButton>
+        <ion-buttons start *ngIf="prevPage==='home'">
+            <button ion-button clear icon-only (click)="popRoot()">
+                <ion-icon name="arrow-dropleft"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>贷款审批结果</ion-title>
+        <ion-buttons end *ngIf="prevPage==='fastLoan'">
+            <button ion-button clear (click)="popRoot()">完成</button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <!--审批通过-->
+    <div class="pass-statu" *ngIf="shouldShowSuccess()">
+        <div class='result-icon'>
+            <ion-icon name="wancheng">恭喜您，您的贷款申请审批通过！</ion-icon>
+            <ion-icon name="information">签约有效期还剩下：{{fastLoanDeposit?.signRemainDays}} 天</ion-icon>
+        </div>
+        <ion-card class="msg-card">
+            <ion-card-header>
+                <div class="bg-img">
+                    <ion-img [src]="itemBg | imgPipe"></ion-img>
+                </div>
+                <p>审批结果</p>
+            </ion-card-header>
+            <ion-card-content>
+                <div>
+                    <ion-row>
+                        <p>商户名</p>
+                        <p>{{fastLoanDeposit?.mchtName}}</p>
+                    </ion-row>
+                    <ion-row>
+                        <p>放款账号</p>
+                        <p>{{fastLoanDeposit?.bankAccount}}</p>
+                    </ion-row>
+                    <ion-row>
+                        <p>贷款金额</p>
+                        <p class="font-key apply-cash">{{fastLoanDeposit?.approveLimit | currencyPipe}} 元
+                            <span *ngIf="fastLoanApplyInfo?.loanAmount !== fastLoanDeposit?.repaymentAmt">申请贷款金额：{{fastLoanApplyInfo?.loanAmount | currencyPipe}} 元</span>
+                        </p>
+                    </ion-row>
+                    <ion-row>
+                        <p>贷款期限</p>
+                        <p class="font-key apply-cash">{{fastLoanDeposit?.loanDuration | fastLoanTermsPipe}}
+                            <span *ngIf="fastLoanApplyInfo?.loanDuration !== fastLoanDeposit?.loanDuration">申请贷款期限：{{fastLoanApplyInfo?.loanDuration | fastLoanTermsPipe}}</span>
+                        </p>
+                    </ion-row>
+                    <ion-row>
+                        <p>还款方式</p>
+                        <p class="font-key apply-cash">{{fastLoanDeposit?.loanCycleType | fastLoanRepaymentTypePipe}}
+                            <span *ngIf="fastLoanApplyInfo?.paymentType !== fastLoanDeposit?.loanCycleType">申请还款方式：{{fastLoanApplyInfo?.paymentType | fastLoanRepaymentTypePipe}}</span>
+                        </p>
+                    </ion-row>
+                    <ion-row>
+                        <p>日管理费率</p>
+                        <p class="font-key">{{fastLoanDeposit?.manageFeeRate | dailyCurrencyRatesPipe}}</p>
+                    </ion-row>
+                </div>
+            </ion-card-content>
+        </ion-card>
+        <div class="agree-provision">
+            <ion-checkbox id="provision" [checked]="isCheck"></ion-checkbox>
+            <label for="provision" (click)="agree($event)">我已阅读</label>
+            <button ion-button clear color="primary" class="text-btn" (click)="goToFastLoanContracts()">《好老板POS融资服务合同》
+            </button>
+        </div>
+        <ion-row>
+            <button color="primary" round class="apply-btn" ion-button block (click)="goToSign()"
+                    [disabled]="signButtonDisabled">我要签约
+            </button>
+        </ion-row>
+    </div>
+
+
+    <!--人工审批-->
+    <div class="approval-statu" *ngIf="shouldShowInReview()">
+        <div class='result-icon'>
+            <ion-icon name="smile">您的审核需要人工审批！</ion-icon>
+            <p color="font-normal">根据您的综合情况，您的贷款申请需要人工审批，后续会有信贷人员联系您，帮助您尽快获得贷款，请保持手机通畅！</p>
+        </div>
+        <ion-card class="msg-card">
+            <ion-card-header>
+                <div class="bg-img">
+                    <ion-img [src]="itemBg | imgPipe"></ion-img>
+                </div>
+                <p>申请信息</p>
+            </ion-card-header>
+            <ion-card-content>
+                <div>
+                    <ion-row>
+                        <p>商户名</p>
+                        <p>{{fastLoanApplyInfo?.mchtName}}</p>
+                    </ion-row>
+                    <ion-row>
+                        <p>放款账号</p>
+                        <p>{{fastLoanApplyInfo?.bankAccount}}</p>
+                    </ion-row>
+                    <ion-row>
+                        <p>贷款金额</p>
+                        <p color="font-normal">{{fastLoanApplyInfo?.loanAmount | currencyPipe}} 元</p>
+                    </ion-row>
+                    <ion-row>
+                        <p>贷款期限</p>
+                        <p>{{fastLoanApplyInfo?.loanDuration | fastLoanTermsPipe}}</p>
+                    </ion-row>
+                    <ion-row>
+                        <p>还款方式</p>
+                        <p>{{fastLoanApplyInfo?.paymentType | fastLoanRepaymentTypePipe}}</p>
+                    </ion-row>
+                </div>
+            </ion-card-content>
+        </ion-card>
+        <ion-row class="warning-text">
+            温馨提示：以上为初审结果，贷款期限或金额有可能根据您的实际情况略有调整。最终贷款信息请以终审结果为准
+        </ion-row>
+    </div>
+
+    <!--审批失败-->
+    <div class="fail-statu" *ngIf="shouldShowFail()">
+        <div class='result-icon'>
+            <ion-icon name="cry">很抱歉您的贷款申请审批未通过！</ion-icon>
+            <p color="font-normal">请联系您的客户经理或拨打客户电话进行处理</p>
+        </div>
+        <ion-grid>
+            <ion-row>贷款未通过审批可能由以下一个或多个原因导致：</ion-row>
+            <ion-row><span>&bull;</span>该地区暂未开通此业务</ion-row>
+            <ion-row><span>&bull;</span>未按要求提供申请材料</ion-row>
+            <ion-row><span>&bull;</span>经营收入稳定性</ion-row>
+            <ion-row><span>&bull;</span>收入水平及认定</ion-row>
+            <ion-row><span>&bull;</span>还款能力/负债比</ion-row>
+            <ion-row><span>&bull;</span>信用记录</ion-row>
+            <ion-row><span>&bull;</span>信用评分</ion-row>
+            <ion-row><span>&bull;</span>其他</ion-row>
+        </ion-grid>
+    </div>
+
+    <!--超时未签约-->
+    <div class="fail-statu" *ngIf="shouldShowTimeOut()">
+        <div class='result-icon'>
+            <ion-icon name="cry">贷款超时未签约！</ion-icon>
+            <p color="font-normal">您可以再次尝试申请。如需帮助，请您与通联支付客户经理联系。</p>
+        </div>
+    </div>
+</ion-content>

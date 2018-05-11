@@ -1,0 +1,43 @@
+page-daily-loan-intro {
+  .banner {
+    img {
+      width: 100%;
+    }
+    .banner-text {
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      top: 50%;
+      margin-top: -22px;
+      p {
+        margin: 0;
+        color: #2a5c89;
+        font-size: 13px;
+        height: 24px;
+        line-height: 24px;
+        background-color: #64cda2;
+        color: #fff;
+        &:nth-child(1) {
+          font-size: 15px;
+          padding-left: 28px;
+          margin-bottom: 4px;
+          width: 95px;
+        }
+        &:nth-child(2) {
+          margin-left: 1.8rem;
+          width: 13rem;
+          text-align: center;
+        }
+      }
+    }
+  }
+  .footer {
+    .toolbar {
+      border-top:0.55px solid #dcdcdc;
+      min-height: 66px;
+    }
+    .title {
+      padding: 0
+    }
+  }
+}

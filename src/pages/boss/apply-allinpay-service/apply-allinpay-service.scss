@@ -1,0 +1,45 @@
+page-apply-allinpay-service {
+  .scroll-content {
+    .choose-merchant {
+      border-bottom: 10px solid #efeff4;
+      .merchant-info {
+        &:nth-child(2){
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        &>span {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          margin: 0;
+        }
+      }
+    }
+    .gb-form {
+      padding: 0 26px;
+      &>.item {
+        margin-bottom: 0;
+        &:last-child {
+          .item-inner {
+            height: 8rem;
+            .input-wrapper {
+              height: 100%;
+              textarea {
+                height: calc(100% - 22px);
+              }
+            }
+          }
+        }
+      }
+      .date-pick {
+        flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
+        @include justify-content(space-between);
+        .item {
+          width: 48%;
+        }
+      }
+    }
+  }
+}

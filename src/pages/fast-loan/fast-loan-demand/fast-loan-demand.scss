@@ -1,0 +1,43 @@
+page-fast-loan-loan-demand {
+  .choose-merchant {
+    border-bottom: 9px solid #efeff4;
+  }
+  .account-box {
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-bottom: 13px;
+    margin-top: 22px;
+  }
+  .gb-form {
+    padding: 0 25px;
+    .item {
+      margin-bottom: 13px !important;
+    }
+  }
+  .tips {
+    background: #efeff4;
+    padding: 0 10px 10px 10px;
+    p {
+      color: map-get($colors, 'font-light');
+      font-size: 12px;
+      margin: 0;
+    }
+  }
+  .submit-btn {
+    margin-top: 80px;
+  }
+  .pre-credit-input {
+    input:-ms-input-placeholder {
+      font-size: 11px;
+    }
+    input::-moz-input-placeholder {
+      font-size: 11px;
+    }
+    input:-moz-input-placeholder {
+      font-size: 11px;
+    }
+    input::-webkit-input-placeholder {
+      font-size: 11px;
+    }
+  }
+}

@@ -1,0 +1,147 @@
+<!--
+  Generated template for the TtrIntro page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header #header>
+
+    <ion-navbar>
+        <ion-title>天天融</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <div class="banner">
+        <img [src]="banner | imgPipe"/>
+        <!--<div class="banner-text">
+            <p>随时提现</p>
+            <p>费率低，实时到账</p>
+        </div>-->
+    </div>
+    <ion-list class="intro-list">
+        <ion-list-header>
+            <ion-icon name="form">产品介绍</ion-icon>
+        </ion-list-header>
+        <ion-item class="pro pro-intro">
+            <p>以商户未结算POS交易流水为基础，当日流水实时提现。提现实时到账，费率低，全方位满足商户灵活多样的资金需求！</p>
+        </ion-item>
+        <ion-list-header>
+            <ion-icon name="integral">产品优势</ion-icon>
+        </ion-list-header>
+        <ion-item class="pro pro-adv">
+            <ion-row>
+                <ion-col col-6>
+                    <div>
+                        <ion-icon name='clock'></ion-icon>
+                    </div>
+                    <div>
+                        <p>超快速</p>
+                        <p>当日交易流水实时到账</p>
+                    </div>
+                </ion-col>
+                <ion-col col-6>
+                    <div>
+                        <ion-icon name='shangcheng'></ion-icon>
+                    </div>
+                    <div>
+                        <p>全自助</p>
+                        <p>自助申请、自助提现、提多少您来定</p>
+                    </div>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col col-6>
+                    <div>
+                        <ion-icon name='compass'></ion-icon>
+                    </div>
+                    <div>
+                        <p>超灵活</p>
+                        <p>不提款就不收费</p>
+                    </div>
+                </ion-col>
+                <ion-col col-6>
+                    <div>
+                        <ion-icon name='19'></ion-icon>
+                    </div>
+                    <div>
+                        <p>额度高</p>
+                        <p>最高可提100万</p>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+        <ion-list-header>
+            <ion-icon name="manage-order">还款方式</ion-icon>
+        </ion-list-header>
+        <ion-item class="pro pro-repayment">
+            <ion-icon name="wancheng">流水抵扣</ion-icon>
+        </ion-item>
+        <ion-list-header>
+            <ion-icon name="survey">常见问题</ion-icon>
+        </ion-list-header>
+        <ion-item class="pro question-item">
+            <div class="question">
+                <ion-row>
+                    <img src="assets/images/img/intro_question.png">
+                    <p>关于天天融还款问题，商户是否需要自己操作还款？</p>
+                </ion-row>
+                <ion-row>
+                    <img src="assets/images/img/intro_answer.png">
+                    <p>一般情况下，商户无需任何操作，应还金额会从商户流水中自动扣取。</p>
+                </ion-row>
+            </div>
+            <div class="question">
+                <ion-row>
+                    <img src="assets/images/img/intro_question.png">
+                    <p>好老板POS贷对贷款资金用途有限制吗？</p>
+                </ion-row>
+                <ion-row>
+                    <img src="assets/images/img/intro_answer.png">
+                    <p>贷款资金应用于企业正常经营活动，不得用于投资股票、债券、理财产品、期货、股本权益等投资，或变相用于房地产项目开发以及其他权益性投资或者国家有关法律、法规和规章明令禁止的其他行为。</p>
+                </ion-row>
+            </div>
+            <div class="question">
+                <ion-row>
+                    <img src="assets/images/img/intro_question.png">
+                    <p>天天融的身份验证失败是什么原因？</p>
+                </ion-row>
+                <ion-row>
+                    <img src="assets/images/img/intro_answer.png">
+                    <p>身份验证失败，主要是因为法人信息有误或者银行卡未验证过手机导致的。</p>
+                </ion-row>
+            </div>
+            <div class="question">
+                <ion-row>
+                    <img src="assets/images/img/intro_question.png">
+                    <p>新入网的商户可以申请天天融业务吗？</p>
+                </ion-row>
+                <ion-row>
+                    <img src="assets/images/img/intro_answer.png">
+                    <p>可以的，天天融业务只要是通联商户即可申请开通。</p>
+                </ion-row>
+            </div>
+            <div class="question">
+                <ion-row>
+                    <img src="assets/images/img/intro_question.png">
+                    <p>有集团商户号绑定的商户是否可以申请？</p>
+                </ion-row>
+                <ion-row>
+                    <img src="assets/images/img/intro_answer.png">
+                    <p>不可以的，开通天天融业务的商户结算方式需是T+1商户，且没有进行集团账户绑定的商户。</p>
+                </ion-row>
+            </div>
+        </ion-item>
+    </ion-list>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-title>
+            <div class="apply-btn-box">
+                <button color="primary" round class="apply-btn" ion-button block (click)="goProfile()">立刻申请</button>
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-footer>

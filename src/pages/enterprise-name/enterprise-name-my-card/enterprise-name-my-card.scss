@@ -1,0 +1,65 @@
+page-enterprise-name-my-card {
+  .back-button.show-back-button {
+    display: none;
+  }
+  #navbar .toolbar-background-ios:nth-child(1) {
+    background: -webkit-linear-gradient(#72DDAA 0%, #54CCAD 100%);
+    background: -o-linear-gradient(#72DDAA 0%, #54CCAD 100%);
+    background: linear-gradient(#72DDAA 0%, #54CCAD 100%);
+  }
+  .segment-ios .segment-button {
+    border: 0;
+    line-height: 44px;
+    height: 44px;
+  }
+  .segment-ios .segment-button.segment-activated {
+    background: #fff;
+    color: #58CFB1;
+    border-bottom: 2px solid #58CFB1;
+  }
+  .toolbar-ios .segment-button {
+    max-width: 100%;
+  }
+  .segment-ios .segment-button {
+    color: #6D6D6D;
+    font-size: 16px;
+    border-bottom: 2px solid #fff;
+  }
+  .segment-ios .segment-button:last-of-type,
+  .segment-ios .segment-button:first-of-type {
+    border-radius: 0;
+  }
+  .nameCard_img {
+    height: 300px;
+    border: 1px solid red;
+    margin: 0 auto;
+  }
+  .nameCard_txt div:nth-child(1) {
+    font-size: 16px
+  }
+  .nameCard_txt div:nth-child(2) {
+    font-size: 12px;
+    color: #ccc
+  }
+  .status {
+    color: #F58369;
+  }
+  ion-row ion-col:nth-child(2) {
+    padding: 10px;
+  }
+  .item-ios p {
+    font-size: 12px;
+    margin: 7% 0;
+  }
+  .item-ios p:nth-child(1) {
+    margin-top: 0;
+  }
+  #tab .toolbar-background-ios {
+    background: #fff;
+    border-bottom: 1px solid #ccc;
+    min-height: 46px;
+  }
+  .toolbar-ios {
+    min-height: 46px;
+  }
+}

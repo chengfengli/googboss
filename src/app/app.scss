@@ -1,0 +1,1109 @@
+// http://ionicframework.com/docs/v2/theming/
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+/*iconfont*/
+
+@font-face {
+  font-family: 'allinpay';
+  font-weight: normal;
+  font-style: normal;
+  src: url('../assets/fonts/RBNO2LIGHT.OTF') format("opentype");
+}
+
+
+/*原有方式icon添加*/
+
+@mixin addIcon($content) {
+  display: inline-block;
+  font-family: "iconfont";
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-rendering: auto;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: $content;
+}
+
+//需要添加的icon名,icon码
+$newIcon: (('shouyeshouye', '\e629'),
+('tongjibtn', '\e606'),
+('14', '\e63f'),
+('gengduo', '\e61d'),
+('jinrongleiicontubiao-1', '\e62a'),
+('jinrongleiicontubiao', '\e621'),
+('icon', '\e62b'),
+('tuijian', '\e678'),
+('kuaisufangkuan', '\e652'),
+('assessedbadge', '\e70a'),
+('kuaisudaozhang-copy', '\e623'),
+('shijian-copy', '\e622'),
+('icon-training', '\e6cd'),
+('profile', '\e610'),
+('shengrongdanbao', '\e651'),
+('account1', '\e60c'),
+('icon52', '\e665'),
+('wancheng', '\e65b'),
+('smile', '\e6af'),
+('cry', '\e69f'),
+('tixian', '\e653'),
+('rejectedorder', '\e72e'),
+('close', '\e69a'),
+('set', '\e6c8'),
+('03', '\e634'),
+('jinrongleiicontubiao-4', '\e62e'),
+('04', '\e635'),
+('wanshanxinxi', '\e666'),
+('zhunongdaikuan', '\e65c'),
+('100fenqidaikuan01', '\e65a'),
+('gerenzhongxin', '\e70b'),
+('mingxi', '\e65e'),
+('huankuanjihua', '\e685'),
+('21', '\e64b'),
+('feedback', '\e616'),
+('jinrongleiicontubiao-3', '\e62d'),
+('information', '\e6a5'),
+('help', '\e6a3'),
+('jinrongleiicontubiao-2', '\e66c'),
+('zhunongdaikuan', '\e65c'),
+('daikuan1', '\e669'),
+('shuju', '\e66d'),
+('renzheng', '\e668'),
+('huankuan', '\e66b'),
+('fuwuguanli', '\e6b3'),
+('jiankangguanjia', '\e94d'),
+('shichangjingli', '\e66a'),
+('wujiaoxing', '\e66f'),
+('wujiaoxingshixin', '\e698'),
+('shezhi', '\e670'),
+('genghuanshoujihaoma', '\e68f'),
+('zliconpassword01', '\e672'),
+('guanyuwomen', '\e671'),
+('jinrongleiicontubiao-9', '\e675'),
+('jinrongleiicontubiao-10', '\e676'),
+('jinrongleiicontubiao-7', '\e673'),
+('jinrongleiicontubiao-8', '\e674'),
+('good', '\e723'),
+('artboard4copy', '\e656'),
+('mima', '\e654'),
+('skip', '\e724'),
+('edit', '\e69e'),
+('mingpian', '\e67b'),
+('remind', '\e6d8'),
+('fenxiang', '\e67c'),
+('update', '\e711'),
+('rightarrow', '\e624'),
+('form', '\e6b9'),
+('integral', '\e70c'),
+('manage-order', '\e72d'),
+('clock', '\e6d7'),
+('shangcheng', '\e608'),
+('compass', '\e71b'),
+('19', '\e64e'),
+('survey', '\e6cc'),
+('operation', '\e70e'),
+('trade', '\e758'),
+('16', '\e641'),
+('history', '\e6fc'));
+@for $i from 1 to length($newIcon)+1 {
+  //ios
+  .ion-ios-#{nth(nth($newIcon,$i),1)}:before {
+    @include addIcon(nth(nth($newIcon, $i), 2));
+  }
+  .ion-ios-#{nth(nth($newIcon,$i),1)}-outline:before {
+    @include addIcon(nth(nth($newIcon, $i), 2));
+  }
+  //android
+  .tabs-md .tab-button[aria-selected=true] {
+    .ion-md-#{nth(nth($newIcon,$i),1)}:before {
+      @include addIcon(nth(nth($newIcon, $i), 2));
+    }
+  }
+  .tabs-md .tab-button[aria-selected=false] {
+    .ion-md-#{nth(nth($newIcon,$i),1)}:before {
+      @include addIcon(nth(nth($newIcon, $i), 2));
+    }
+  }
+  .ion-md-#{nth(nth($newIcon,$i),1)}:before {
+    @include addIcon(nth(nth($newIcon, $i), 2));
+  }
+}
+
+
+/*ion-icon与字的距离*/
+
+ion-icon {
+  &:before {
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+}
+
+
+/*flexbox兼容*/
+
+@mixin flex-box {
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
+  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+@mixin flex-direction($flexDirection:column) {
+  -webkit-flex-direction: $flexDirection;
+  -moz-flex-direction: $flexDirection;
+  -ms-flex-direction: $flexDirection;
+  -o-flex-direction: $flexDirection;
+  flex-direction: $flexDirection;
+}
+
+@mixin align-items($align-items:center) {
+  -webkit-align-items: $align-items;
+  -moz-align-items: $align-items;
+  -ms-align-items: $align-items;
+  -o-align-items: $align-items;
+  align-items: $align-items;
+}
+
+@mixin justify-content($justify-content:center) {
+  -webkit-justify-content: $justify-content;
+  -moz-justify-content: $justify-content;
+  -ms-justify-content: $justify-content;
+  -o-justify-content: $justify-content;
+  justify-content: $justify-content;
+}
+
+@mixin flex-wrap($flex-wrap:wrap) {
+  -webkit-flex-wrap: $flex-wrap;
+  -moz-flex-wrap: $flex-wrap;
+  -ms-flex-wrap: $flex-wrap;
+  -o-flex-wrap: $flex-wrap;
+  flex-wrap: $flex-wrap;
+}
+
+@mixin flex($flex:1) {
+  -webkit-flex: $flex;
+  -ms-flex: $flex;
+  flex: $flex;
+}
+
+
+/*关键帧动画*/
+
+@mixin keyframes($framName) {
+  @keyframes #{$framName} {
+    @content;
+  }
+  @-moz-keyframes #{$framName} {
+    @content;
+  }
+  @-webkit-keyframes #{$framName} {
+    @content;
+  }
+  @-o-keyframes #{$framName} {
+    @content;
+  }
+}
+
+
+/*清除浮动*/
+
+@mixin clearfix {
+  &:after {
+    clear: both;
+    content: '.';
+    display: block;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+  }
+  *height: 1%;
+}
+
+
+/*transform*/
+
+@mixin transform($content) {
+  transform: $content;
+  -ms-transform: $content;
+  /* IE 9 */
+  -moz-transform: $content;
+  /* Firefox */
+  -webkit-transform: $content;
+  /* Safari 和 Chrome */
+  -o-transform: $content
+}
+
+
+/*iphone5,6,6plus兼容写法*/
+
+@mixin responsive($width) {
+  @if $width==sm {
+    @media only screen and (min-width: 320px) and (max-width: 374px) {
+      @content;
+    }
+  }
+  @else if $width==md {
+    @media only screen and (min-width: 375px) and (max-width: 413px) {
+      @content;
+    }
+  }
+  @else if $width==lg {
+    @media only screen and (min-width: 414px) and (max-width: 736px) {
+      @content;
+    }
+  }
+}
+
+.has-refresher>.scroll-content {
+  border-top: none;
+}
+
+
+/* toast */
+
+.toast-wrapper.toast-middle {
+  left: 15%;
+  right: 15%;
+  max-width: 500px;
+  background-color: rgba(0, 0, 0, 0.6);
+  .toast-message {
+    text-align: center;
+  }
+}
+
+
+/*按钮*/
+
+.login-btn {
+  width: 86%;
+  margin: 0 auto;
+}
+
+.submit-btn {
+  width: 80%;
+  margin: 0 auto;
+}
+
+a[disabled],
+button[disabled],
+[ion-button][disabled] {
+  opacity: 1;
+  background: #b8b8b8;
+}
+
+.toolbar {
+  .toolbar-background {
+    border: none;
+  }
+}
+
+
+/*表单*/
+
+ion-list.gb-form {
+  padding: 0 9px;
+  font-size: 1.3rem;
+  .gb-item-title {
+    color: #333;
+    margin-bottom: 0.9rem;
+    margin-top: 0.5rem;
+  }
+  ion-item.item {
+    border: #ebebeb 1px solid;
+    padding-left: 0.9rem;
+    background-color: #f6f6f6;
+    margin-bottom: 0.8rem;
+    border-radius: 5px;
+    min-height: 3.4rem;
+    color: #333;
+    font-size: 1.3rem;
+    .select-label {
+      margin-right: 0;
+    }
+    .select {
+      width: 100%;
+      max-width: 100%;
+      padding-left: 0;
+      .select-icon {
+        float: right;
+      }
+    }
+    &:first-child {
+      border-top: #ebebeb 1px solid;
+    }
+    &:last-child {
+      border-bottom: #ebebeb 1px solid;
+    }
+    .item-inner {
+      height: 3.4rem;
+      border: none;
+      .input-wrapper {
+        height: 3.4rem;
+      }
+    }
+    @media (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {
+      height: 3.9rem;
+      .item-inner {
+        height: 3.9rem;
+        .input-wrapper {
+          height: 3.9rem;
+        }
+      }
+    }
+    ;
+  }
+}
+
+
+/*tab栏*/
+
+ion-tabs {
+  .tab-button-icon {
+    color: #666666 !important;
+    &:before {
+      margin-right: 0;
+      margin-top: 1px;
+    }
+  }
+  .tab-button-text {
+    color: #666666 !important;
+  }
+  .tab-button[aria-selected="true"] {
+    border-top: 0.2rem solid #f45e3b;
+    .tab-button-text {
+      color: #f45e3b !important;
+    }
+    .tab-button-icon {
+      color: #f45e3b !important;
+      margin-top: calc(4px - 0.2rem);
+    }
+  }
+}
+
+
+/*钱字体*/
+
+.cash-font {
+  font-family: allinpay;
+}
+
+
+/*加载dialog*/
+
+ion-loading {
+  ion-backdrop {
+    opacity: 0 !important;
+  }
+  .loading-wrapper {
+    width: 60%;
+    padding: 10px 0 !important;
+    color: #fff !important;
+    @include justify-content();
+    .loading-spinner {
+      margin-left: -1.7rem;
+    }
+  }
+}
+
+
+/*获取验证码*/
+
+ion-item {
+  .item-button.getCode {
+    height: 2.7rem;
+    margin: 0;
+    padding: 0;
+    width: 8.4rem;
+    margin-top: -0.2rem;
+    margin-right: -4px;
+    // &.large {
+    //   width: 10rem;
+    // }
+  }
+}
+
+
+/*同意用户条款*/
+
+.agree-provision {
+  color: #666;
+  font-size: 1.4rem;
+  position: relative;
+  @include flex-box();
+  #provision {
+    position: absolute;
+    top: 4px;
+    width: 1px;
+    height: 1px;
+    .checkbox-icon {
+      display: none
+    }
+  }
+  label {
+    padding-left: 2.5rem;
+    background-image: url(../assets/images/img/choose-none@2x.png);
+    background-repeat: no-repeat;
+    background-size: 10px 10px;
+    background-color: #fff;
+    background-position: 10px center;
+    cursor: pointer;
+    height: 30px;
+    line-height: 30px;
+  }
+}
+
+
+/*文字按钮*/
+
+.text-btn {
+  margin: 0;
+  padding: 0;
+  font-size: 1.4rem;
+  height: auto;
+}
+
+
+/*背景图片*/
+
+.bg-img {
+  ion-img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+/*图片大小统一*/
+
+ion-img {
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+/*快快贷天天融 产品介绍表格*/
+
+ion-list.intro-list {
+  margin: 0;
+  ion-label {
+    white-space: normal;
+  }
+  .list-header {
+    border-bottom: none !important;
+    ion-label {
+      margin-top: 9px;
+      margin-bottom: 9px;
+      ion-icon {
+        font-size: 16px;
+        color: #033333;
+        &:before {
+          font-size: 20px;
+          color: map-get($colors, 'primary');
+        }
+      }
+    }
+  }
+  .item {
+    &.pro-adv {
+      .label {
+        margin-bottom: 17px;
+      }
+      ion-row {
+        border-top: 1px solid #dcdcdc;
+        &:last-child {
+          border-bottom: 1px solid #dcdcdc;
+        }
+        &>ion-col {
+          padding-top: 13px;
+          padding-bottom: 13px;
+          padding-left: 15px;
+          @include flex-box();
+          &:first-child {
+            border-right: 1px solid #dcdcdc;
+          }
+          &>div {
+            &:first-child {
+              min-width: 26px;
+              margin-right: 6px;
+              ion-icon {
+                font-size: 21px;
+                color: map-get($colors, 'light');
+              }
+            }
+            &:nth-child(2) {
+              &>p {
+                color: map-get($colors, 'font-normal');
+                &:first-child {
+                  font-size: 14px;
+                  color: map-get($colors, 'font-dark');
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    &.pro-repayment {
+      min-height: 0;
+      .item-inner {
+        min-height: 0;
+        .label {
+          margin: 0;
+          margin-bottom: 15px;
+          padding-left: 28px;
+          ion-icon {
+            font-size: 12px;
+            color: map-get($colors, 'font-normal');
+            &:before {
+              font-size: 10px;
+              color: map-get($colors, 'light');
+            }
+          }
+        }
+      }
+    }
+    &.pro {
+      .label {
+        margin-top: 0;
+      }
+    }
+    border-bottom: 5px solid #efeff4;
+    &.question-item {
+      border-bottom: none;
+      .label {
+        border-top: 0.55px solid #dcdcdc;
+        padding-top: 15px;
+      }
+      img {
+        min-width: 20px;
+        height: 20px;
+        margin-right: 6px;
+      }
+      .row {
+        -webkit-flex-wrap: nowrap;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        &:nth-child(2) {
+          margin-top: 20px;
+        }
+      }
+      .question {
+        margin-bottom: 12px;
+        margin-left: 21px;
+        border-bottom: 0.55px solid #dcdcdc;
+        padding-bottom: 15px;
+      }
+    }
+    .item-inner {
+      border: none !important;
+    }
+    p {
+      font-size: 12px;
+      line-height: 20px;
+      color: map-get($colors, 'font-normal');
+      span {
+        font-size: 14px;
+        margin-right: 15px;
+      }
+    }
+  }
+}
+
+.apply-btn-box {
+  &>.button {
+    width: 80%;
+    margin: 0 auto;
+  }
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  top:-5px;
+  padding: 15px 0;
+  background-color: #fff;
+  z-index: 10;
+}
+
+
+/*card*/
+
+ion-card.gb-card {
+  box-shadow: none;
+  width: 100%;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+
+/*全屏遮罩*/
+
+.shade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+
+/*选择商户按钮*/
+
+.choose-merchant {
+  padding-left: 21px;
+  height: 7rem;
+  &>ion-icon {
+    font-size: 30px;
+    margin-right: 8px !important;
+  }
+  .merchant-info {
+    &:nth-child(1) {
+      @include flex-box;
+      @include align-items();
+      .merchant-detail {
+        z-index: 100;
+      }
+      &>span {
+        min-width: 42px;
+      }
+      i {
+        font-style: normal;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+    }
+  }
+  .item-inner {
+    border: none !important;
+    &>ion-icon {
+      @include flex-box;
+      align-items: center;
+      color: #999;
+      font-size: 20px;
+      @include flex-box;
+      @include align-items();
+    }
+    .label>div {
+      &:nth-child(1) {
+        margin-bottom: 5px;
+      }
+      font-size: 12px;
+      color: #666;
+      span {
+        font-size: 14px;
+        margin-right: 16px;
+      }
+    }
+  }
+}
+
+
+/*4位卡号输入框*/
+
+.account-box {
+  margin-top: 3.2rem;
+  padding: 0 20px;
+  .account-title {
+    color: #033333;
+    margin-bottom: 1.3rem;
+  }
+  .my-account {
+    width: 100%;
+    height: 50px;
+    position: relative;
+    background-color: #f6f6f6;
+    border: 1px solid #ebebeb;
+    border-radius: 5px;
+    @include flex-box;
+    @include align-items();
+    @include justify-content();
+    font-size: 18px;
+    color: map-get($colors, 'font-normal');
+    span {
+      margin-right: 13px;
+      @include responsive(sm) {
+        margin-right: 6px;
+      }
+      white-space: nowrap;
+    }
+    #account-num {
+      border: none;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      text-indent: -1000px;
+    }
+    .account-num {
+      width: 14px;
+      border: none;
+      border-bottom: 2px solid map-get($colors, 'font-dark');
+      background: none;
+      margin-right: 9px;
+      margin-top: -5px;
+      border-radius: 0 !important;
+      padding: 0;
+      text-align: center;
+      &.active {
+        border-bottom-color: map-get($colors, 'primary') !important;
+      }
+    }
+  }
+}
+
+
+/*处理结果页头部*/
+
+.result-icon {
+  @include flex-box();
+  @include justify-content();
+  @include flex-direction();
+  @include align-items();
+  ion-icon {
+    &:nth-child(1) {
+      color: map-get($colors, 'font-dark');
+      font-size: 16px;
+      &:before {
+        font-size: 35px;
+        margin-right: 13px;
+      }
+    }
+    &:nth-child(2) {
+      color: map-get($colors, 'font-normal');
+      font-size: 13px;
+      &:before {
+        font-size: 20px;
+        margin-right: 10px;
+      }
+    }
+  }
+  p {
+    margin: 0;
+    margin-top: 10px;
+  }
+}
+
+
+/* 去掉iphone input默认样式*/
+
+input {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+
+/*商户item*/
+
+.merchant-item {
+  &>ion-icon {
+    font-size: 35px;
+    margin-right: 15px !important;
+    @include flex-box;
+    @include align-items();
+  }
+  .item-inner {
+    border: none !important;
+    .merchant-info {
+      p {
+        font-size: 13px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        @include flex-box;
+        @include align-items();
+        color: map-get($colors, 'font-normal');
+        i {
+          font-style: normal;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+        &>span {
+          min-width: 45px;
+          color: map-get($colors, 'font-dark');
+          font-size: 15px;
+          margin-right: 17px;
+        }
+      }
+    }
+  }
+}
+
+
+/*还款明细表格*/
+
+.withdraw-box {
+  @include flex-box;
+  @include flex-direction();
+  background-color: #efeff4;
+  ion-grid {
+    background: #fff;
+    flex: 1;
+    padding: 0;
+    ion-row {
+      border-bottom: 1px solid #e5e5e5;
+      padding-top: 7px;
+      ion-col {
+        text-align: center;
+        font-size: 10px;
+        color: map-get($colors, 'font-normal');
+        line-height: 20px;
+      }
+      &.deal-list-title {
+        padding: 15px 0 11px;
+        background-color: map-get($colors, 'light');
+        font-size: 14px;
+        border-bottom: none;
+        ion-col {
+          border-right: 1px solid #fff;
+          text-align: center;
+          padding: 0;
+          height: 16px;
+          color: #fff;
+          p {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+          }
+          &:last-child {
+            border-right: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/*信息卡*/
+
+ion-card.msg-card {
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  ion-card-header {
+    position: relative;
+    padding: 0;
+    height: 45px;
+    &>p {
+      position: absolute;
+      z-index: 1;
+      color: white;
+      font-size: 17px;
+      font-weight: normal;
+      left: 50%;
+      line-height: 45px;
+      margin-left: -34px;
+    }
+    .bg-img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+    }
+  }
+  ion-card-content {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    ion-row {
+      @include justify-content(space-between);
+      padding-top: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #e5e5e5;
+      &:last-child {
+        border-bottom: 0;
+      }
+      .msg-title {
+        ion-icon {
+          font-size: 15px;
+          &:before {
+            font-size: 20px;
+            margin-right: 9px;
+          }
+        }
+      }
+      p {
+        padding: 0;
+        &:nth-child(1) {
+          font-size: 14px;
+          color: map-get($colors, 'font-normal');
+        }
+        &:nth-child(2) {
+          font-size: 12px;
+          color: map-get($colors, 'font-light');
+          &.font-key {
+            color: map-get($colors, 'primary');
+          }
+        }
+      }
+    }
+    &>div {
+      border-bottom: 1px solid #dcdcdc;
+      padding: 4px 16px 0;
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+}
+
+
+/*双向按钮*/
+
+.btn-box {
+  margin-top: 18px;
+  width: 100%;
+  @include flex-box;
+  @include justify-content(center);
+  button {
+    margin: 0;
+    width: 40%;
+    font-size: 16px;
+    &:nth-child(1) {
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+    }
+    &:nth-child(2) {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+    }
+  }
+}
+
+// 状态遮罩
+.searching-shade,
+.net-error-shade,
+.no-data-shade,
+.signing-contract {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  @include flex-box();
+  @include justify-content();
+  @include flex-direction();
+  @include align-items();
+  color: map-get($colors, "font-normal");
+  font-size: 13px;
+  background-color: transparent;
+  z-index: 10;
+  img {
+    background: none;
+    margin-top: -30%;
+    margin-bottom: 10px;
+  }
+  p {
+    margin-top: 0;
+  }
+  .button {
+    border-color: #d4d4d4;
+    color: map-get($colors, "font-normal");
+    font-size: 10px;
+    height: 25px;
+    padding: 0 25px;
+  }
+}
+
+.searching-shade {
+  img {
+    width: 100px;
+    height: 106px;
+  }
+}
+
+.net-error-shade {
+  img {
+    width: 107px;
+    height: 106px
+  }
+}
+
+.no-data-shade {
+  img {
+    width: 107px;
+    height: 106px;
+    margin-left: -10px;
+  }
+}
+
+.signing-contract {
+  img {
+    width: 90px;
+    height: 96px;
+  }
+}
+
+.footer {
+  .toolbar-background {
+    background: none;
+  }
+  .toolbar {
+    min-height: 66px;
+  }
+  .title {
+    padding: 0
+  }
+}
+
+
+/*商户查看详情*/
+
+.merchant-detail {
+  min-height: 30px;
+  max-width: 30px;
+  min-width: 30px !important;
+  height: auto;
+  margin: 0;
+  span {
+    overflow: initial !important;
+  }
+  ion-icon {
+    text-overflow: initial !important;
+    overflow: initial !important;
+    @include flex-box();
+    @include justify-content();
+    @include align-items();
+    padding: 0;
+    &:before {
+      font-size: 14px !important;
+    }
+  }
+}
+/*注意文字*/
+.warning-text {
+  margin-top: 14px;
+  margin-bottom:14px;
+  margin-left: 16px;
+  font-size: 12px;
+  margin-right: 16px;
+  color: map-get($colors, 'font-light');
+}

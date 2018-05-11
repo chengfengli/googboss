@@ -1,0 +1,75 @@
+page-daily-loan-withdraw-success {
+  .content {
+    background: #efeff4;
+  }
+  ion-card {
+    ion-card-header {
+      border-bottom: 1px solid #efeff4;
+      & > ion-row {
+        .statu-box {
+          @include flex-box;
+          @include justify-content();
+          @include flex-direction();
+          @include align-items();
+          padding: 0;
+          & > div {
+            width: 2px;
+          }
+        }
+        ion-icon {
+          text-align: center;
+          font-size: 30px;
+          &:before {
+            margin-right: 0;
+          }
+        }
+        &:nth-child(1) {
+          .statu-box {
+            & > div {
+              height: 36px;
+              background-color: #41c895;
+              margin-top: -3px;
+            }
+          }
+        }
+        &:nth-child(2) {
+          margin-top: -12px;
+          .statu-box {
+            & > div {
+              height: 18px;
+              background-color: #c2c2c2;
+              margin-top: -1px;
+            }
+            ion-icon {
+              margin-top: -5px;
+            }
+          }
+          .main-text {
+            & > p {
+              margin-top: 15px;
+            }
+          }
+        }
+        .main-text {
+          margin-left: 10px;
+          font-size: 13px;
+          & > p {
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+    .card-content {
+      padding-bottom: 0;
+      @include flex-box;
+      @include justify-content();
+      @include align-items();
+      height: 4rem;
+      .button {
+        font-size: 13px;
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+}

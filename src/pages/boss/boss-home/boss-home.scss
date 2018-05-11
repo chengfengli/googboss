@@ -1,0 +1,99 @@
+page-boss-home {
+  .content {
+    background-color: #efeff4;
+    ion-list {
+      margin-bottom: 20px;
+      ion-list-header {
+        background-color: #fff;
+        border-bottom-color: #dcdcdc;
+        border-top: 0.55px solid #dcdcdc;
+        font-weight: normal;
+        ion-icon {
+          font-size: 16px;
+          color: #033333;
+          margin-top: 3px;
+          &:before {
+            font-size: 30px;
+          }
+        }
+      }
+      button.item {
+        ion-icon {
+          font-size: 28px;
+        }
+        .item-inner {
+          border-bottom-color: #e5e5e5;
+          .label {
+            font-size: 13px;
+            color: map-get($colors, 'font-normal');
+          }
+        }
+        &:last-child {
+          border-bottom-color: #dcdcdc;
+        }
+      }
+      &:nth-child(1) {
+        ion-list-header {
+          ion-icon {
+            &:before {
+              color: #f57d57;
+            }
+          }
+        }
+        button.item {
+          &:nth-child(2) {
+            ion-icon {
+              color: #b8cb7f;
+            }
+          }
+          &:nth-child(3) {
+            ion-icon {
+              color: #ebc44f;
+            }
+          }
+          &:nth-child(4) {
+            ion-icon {
+              color: #8cdde4;
+            }
+          }
+          &:nth-child(5) {
+            ion-icon {
+              color: #bec3e0;
+            }
+          }
+          &:nth-child(6) {
+            ion-icon {
+              color: #8acda4;
+            }
+          }
+          &:nth-child(7) {
+            ion-icon {
+              color: #ee745f;
+            }
+          }
+        }
+      }
+      &:nth-child(2) {
+        ion-list-header {
+          ion-icon {
+            &:before {
+              color: #41c895;
+            }
+          }
+        }
+        button.item {
+          &:nth-child(2) {
+            ion-icon {
+              color: #ee745f;
+            }
+          }
+          &:nth-child(3) {
+            ion-icon {
+              color: #77d7d2;
+            }
+          }
+        }
+      }
+    }
+  }
+}

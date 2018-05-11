@@ -1,0 +1,27 @@
+page-signup-success {
+  .main {
+    @include flex-box;
+    @include flex-direction();
+    @include align-items();
+    p:nth-child(1) {
+      font-size: 1.6rem;
+      margin-bottom: 0;
+      ion-icon {
+        &:before {
+          font-size: 3.5rem;
+          vertical-align: middle;
+          color: #41C895;
+        }
+      }
+    }
+    p:nth-child(2) {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+    button {
+      width: 11.5rem;
+      height: 3.5rem;
+    }
+  }
+}

@@ -1,0 +1,138 @@
+<!--
+  Generated template for the GetMoneyStatus page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header #header>
+
+    <ion-navbar hideBackButton>
+        <ion-buttons start *ngIf="prevPage==='home'">
+            <button ion-button clear icon-only (click)="goBack()">
+                <ion-icon name="arrow-dropleft"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>放款状态</ion-title>
+        <ion-buttons end *ngIf="prevPage==='fastLoan'">
+            <button ion-button clear (click)="goBack()">完成</button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-card class="gb-card" *ngIf="!shouldShowFail()">
+        <ion-card-header>
+            <ion-icon name="wancheng">恭喜您已经成功放款！</ion-icon>
+        </ion-card-header>
+    </ion-card>
+    <div class="statu-box" *ngIf="shouldShowProcessing()">
+        <ion-row class="statu-title">
+            <ion-icon name="zhunongdaikuan" color="light">系统已实时发放贷款！(部分银行到账会有延迟)</ion-icon>
+        </ion-row>
+        <ion-row class="statu-link-box">
+            <ion-col col-1>
+                <div class="statu-link first"></div>
+            </ion-col>
+            <ion-col col-10 style="margin-left:10px">
+            </ion-col>
+        </ion-row>
+        <ion-row class="statu-title">
+            <ion-icon name="100fenqidaikuan01">贷款已经到您的银行账户，请注意查验！</ion-icon>
+        </ion-row>
+        <ion-row class="statu-link-box">
+            <ion-col col-1>
+                <div class="statu-link second"></div>
+            </ion-col>
+        </ion-row>
+        <ion-row class="statu-title">
+            <ion-icon name="100fenqidaikuan01">操作完成，系统已建账！</ion-icon>
+        </ion-row>
+        <ion-row>
+            <ion-col col-1></ion-col>
+            <ion-col col-10 style="margin-left:10px">
+            </ion-col>
+        </ion-row>
+    </div>
+
+    <div class="statu-box" *ngIf="shouldShowSuccess()">
+        <ion-row class="statu-title">
+            <ion-icon name="zhunongdaikuan" color="light">系统已实时发放贷款！(部分银行到账会有延迟)</ion-icon>
+        </ion-row>
+        <ion-row class="statu-link-box">
+            <ion-col col-1>
+                <div class="statu-link first"></div>
+            </ion-col>
+            <ion-col col-10 style="margin-left:10px">
+            </ion-col>
+        </ion-row>
+        <ion-row class="statu-title">
+            <ion-icon name="100fenqidaikuan01" color="light">贷款已经到您的银行账户，请注意查验！</ion-icon>
+        </ion-row>
+        <ion-row class="statu-link-box">
+            <ion-col col-1>
+                <div class="statu-link second"></div>
+            </ion-col>
+            <ion-col col-10 style="margin-left:10px">
+                <p>卡号{{fastLoanApplyInfo?.bankAccount | sensitiveInformationProtectionPipe}}
+                    <span style="margin-left:5px">{{fastLoanApplyInfo?.reviewAmount | currencyPipe}}</span>元</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="statu-title">
+            <ion-icon name="100fenqidaikuan01">操作完成，系统已建账！</ion-icon>
+        </ion-row>
+        <ion-row>
+            <ion-col col-1></ion-col>
+            <ion-col col-10 style="margin-left:10px">
+            </ion-col>
+        </ion-row>
+    </div>
+
+    <div class="statu-box" *ngIf="shouldShowEstablish()">
+        <ion-row class="statu-title">
+            <ion-icon name="zhunongdaikuan" color="light">系统已实时发放贷款！(部分银行到账会有延迟)</ion-icon>
+        </ion-row>
+        <ion-row class="statu-link-box">
+            <ion-col col-1>
+                <div class="statu-link first"></div>
+            </ion-col>
+            <ion-col col-10 style="margin-left:10px">
+            </ion-col>
+        </ion-row>
+        <ion-row class="statu-title">
+            <ion-icon name="100fenqidaikuan01" color="light">贷款已经到您的银行账户，请注意查验！</ion-icon>
+        </ion-row>
+        <ion-row class="statu-link-box">
+            <ion-col col-1>
+                <div class="statu-link second"></div>
+            </ion-col>
+            <ion-col col-10 style="margin-left:10px">
+                <p>卡号{{fastLoanApplyInfo?.bankAccount | sensitiveInformationProtectionPipe}}
+                    <span style="margin-left:5px">{{fastLoanApplyInfo?.reviewAmount | currencyPipe}}</span>元</p>
+            </ion-col>
+        </ion-row>
+        <ion-row class="statu-title">
+            <ion-icon name="100fenqidaikuan01" color="light">操作完成，系统已建账！</ion-icon>
+        </ion-row>
+        <ion-row>
+            <ion-col col-1></ion-col>
+            <ion-col col-10 style="margin-left:10px">
+            </ion-col>
+        </ion-row>
+    </div>
+
+    <button ion-button color="primary" round class="submit-btn" block *ngIf="shouldShowEstablish()"
+            (click)="goToLoanDetail()">查看我的贷款
+    </button>
+
+    <div class="fail-statu" *ngIf="shouldShowFail()">
+        <div class='result-icon'>
+            <ion-icon name="cry">放款失败</ion-icon>
+            <p color="font-normal">如需帮助，请您与通联支付客户经理联系。</p>
+        </div>
+    </div>
+</ion-content>
